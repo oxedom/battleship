@@ -8,6 +8,10 @@ const shipFactory = () => {
         return arr.forEach(cord => { _shipCords.push(cord) })
     }
 
+    const clearCords = () => {
+        _hitCords = []
+    }
+
     const getCords = () => {
         return _shipCords
     }
@@ -19,7 +23,7 @@ const shipFactory = () => {
         return answer
     }
 
-    return { setCords, length, getCords, hitShip };
+    return { setCords, length, getCords, hitShip, clearCords };
 }
 
 module.exports = { shipFactory }

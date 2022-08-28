@@ -12,4 +12,9 @@ test('hitShip ', () => {
     expect(testShip.hitShip(4)).toBe(true)
 })
 
+test('Clear Cords', () => {
+    testShip.clearCords()
+    expect(testShip.getCords()).toBe([])
+})
+
 
