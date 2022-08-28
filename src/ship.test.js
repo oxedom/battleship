@@ -1,7 +1,7 @@
-const { shipFactory } = require('./js/app')
+const { ShipFactory } = require('./js/ship')
 
 describe('SET CORDS + HIT SHIP, CLEARCOARDS', () => {
-    const testShip = shipFactory()
+    const testShip = ShipFactory()
     testShip.setCords([4, 10, 40, 10])
     test('Set Cords', () => {
 
@@ -21,7 +21,7 @@ describe('SET CORDS + HIT SHIP, CLEARCOARDS', () => {
 describe('SINK SHIP', () => {
 
     test('sinkShip', () => {
-        const sinkShip = shipFactory()
+        const sinkShip = ShipFactory()
         sinkShip.setCords([5, 6, 7, 8])
         sinkShip.hitShip(5)
         sinkShip.hitShip(6)
@@ -32,7 +32,7 @@ describe('SINK SHIP', () => {
     })
 
     test('sinkShip 2', () => {
-        const sinkShip = shipFactory()
+        const sinkShip = ShipFactory()
         sinkShip.setCords([5, 6, 7, 8])
         sinkShip.hitShip(5)
         sinkShip.hitShip(7)

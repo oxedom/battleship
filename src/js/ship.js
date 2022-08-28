@@ -1,6 +1,6 @@
 const libs = require('./libs')
 
-const shipFactory = () => {
+const ShipFactory = () => {
 
     let _shipCords = []
     const _hitCords = []
@@ -41,4 +41,4 @@ const shipFactory = () => {
     return { setCords, length, getCords, hitShip, clearCords, isSunk };
 }
 
-module.exports = { shipFactory }
+module.exports = { ShipFactory }
