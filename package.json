@@ -19,7 +19,6 @@
   },
   "scripts": {
     "jest": "jest --watchAll ",
-    "build": "webpack && npx babel src --out-dir dist --ignore 'src/**/*.spec.js','src/**/*.test.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

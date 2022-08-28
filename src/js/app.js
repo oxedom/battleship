@@ -1,15 +1,17 @@
+const libs = require('./libs')
+
 const shipFactory = () => {
 
-    const _shipCords = []
+    let _shipCords = []
     const _hitCords = []
-
-    const length = () => { return _shipCords.length }
-    const setCords = (arr) => {
-        return arr.forEach(cord => { _shipCords.push(cord) })
+    const _setArray = (targetArr, valuesArr) => {
+        valuesArr.forEach(value => { targetArr.push(value) })
     }
+    const length = () => { return _shipCords.length }
+    const setCords = (cordsArr) => { _setArray(_shipCords, cordsArr) }
 
     const clearCords = () => {
-        _hitCords = []
+        _shipCords = []
     }
 
     const getCords = () => {
@@ -19,11 +21,24 @@ const shipFactory = () => {
         let answer = undefined
         if (_shipCords.includes(cord)) {
             answer = true
+            _hitCords.push(cord)
+        }
+
+        else {
+            answer = false
         }
         return answer
     }
 
-    return { setCords, length, getCords, hitShip, clearCords };
+    const isSunk = () => {
+        return libs.compare(_hitCords, _shipCords)
+
+    }
+
+
+
+
+    return { setCords, length, getCords, hitShip, clearCords, isSunk };
 }
 
 module.exports = { shipFactory }
