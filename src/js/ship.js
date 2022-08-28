@@ -5,7 +5,10 @@ const ShipFactory = () => {
     let _shipCords = []
     const _hitCords = []
     const _setArray = (targetArr, valuesArr) => {
-        valuesArr.forEach(value => { targetArr.push(value) })
+        valuesArr.forEach(value => {
+            if (value > 100) { throw new Error('VALUE TOO BIG FOR GAMEBOARD') }
+            targetArr.push(value)
+        })
     }
     const length = () => { return _shipCords.length }
     const setCords = (cordsArr) => { _setArray(_shipCords, cordsArr) }
