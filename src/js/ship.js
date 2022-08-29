@@ -21,21 +21,17 @@ const ShipFactory = () => {
         return _shipCords
     }
     const hitShip = (cord) => {
-        let answer = undefined
+        let answer = false
         if (_shipCords.includes(cord)) {
-            answer = true
             _hitCords.push(cord)
-        }
-
-        else {
-            answer = false
+            answer = true
         }
         return answer
     }
 
     const isSunk = () => {
-        return libs.compare(_hitCords, _shipCords)
 
+        return libs.compare(_hitCords.sort(), _shipCords.sort())
     }
 
 

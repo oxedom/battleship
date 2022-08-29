@@ -36,7 +36,9 @@ const GameboardFactory = () => {
     }
 
     const sunkenShips = () => {
-        return _ships.every(ship => ship.isSunk())
+        return _ships.every(ship => {
+            ship.isSunk()
+        })
     }
 
 
