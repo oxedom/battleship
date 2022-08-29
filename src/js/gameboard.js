@@ -36,9 +36,12 @@ const GameboardFactory = () => {
     }
 
     const sunkenShips = () => {
-        return _ships.every(ship => {
-            ship.isSunk()
-        })
+        let arr = []
+        let answer = undefined
+        _ships.forEach(ship => arr.push(ship.isSunk()))
+        if (arr.includes(false)) { answer = false }
+        else { answer = true }
+        return answer
     }
 
 

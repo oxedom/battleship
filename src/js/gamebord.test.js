@@ -36,65 +36,18 @@ describe('Check Ship and HitSHip', () => {
 
 
 
-describe('Check Ship and HitSHip', () => {
-
-    const testTwoGameBoard = GameboardFactory()
+describe('Sink Ship GAMEBOARD TEST', () => {
 
 
+    const board = GameboardFactory()
+    board.placeShip([77, 78, 79])
+    board.receiveAttack(77)
+    board.receiveAttack(78)
+    board.receiveAttack(79)
 
-
-
-    // test('Sunken Ships 1', () => {
-    //     testTwoGameBoard.placeShip([4, 10, 40, 80])
-    //     testTwoGameBoard.placeShip([9, 11, 33, 77])
-    //     expect(testTwoGameBoard.sunkenShips()).toEqual(false)
-    // })
-
-
-    test.only('Sunken 2', () => {
-
-
-
-        [4, 10, 40, 80].forEach(el => {
-            testTwoGameBoard.receiveAttack(el)
-        })
-        [9, 11, 33, 77].forEach(el => {
-            testTwoGameBoard.receiveAttack(el)
-        })
-
-
+    test('Gamebord Recive Attack Test 1', () => {
+        expect(board.sunkenShips()).toEqual(true)
     })
-
-})
-
-describe('Check Ship and HitSHip', () => {
-
-    const testThreeGameBoard = GameboardFactory()
-
-
-    testThreeGameBoard.placeShip([5, 10, 40, 89])
-    testThreeGameBoard.placeShip([2, 6, 7, 8])
-
-
-    test('Sunken Ships 1', () => {
-        expect(testThreeGameBoard.sunkenShips()).toEqual(false)
-    })
-
-    [5, 10, 40, 89].forEach(el => {
-        testThreeGameBoard.receiveAttack(el)
-    })
-    [2, 6, 7, 8].forEach(el => {
-        testThreeGameBoard.receiveAttack(el)
-    })
-
-    test('Sunken 2', () => {
-
-        expect(testThreeGameBoard.sunkenShips()).toEqual(true)
-
-
-    }
-
-    )
 
 })
 
