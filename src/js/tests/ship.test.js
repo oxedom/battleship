@@ -1,4 +1,4 @@
-const { ShipFactory } = require('./ship')
+const { ShipFactory } = require('../ship')
 
 describe('SET CORDS + HIT SHIP, CLEARCOARDS', () => {
     const testShip = ShipFactory()

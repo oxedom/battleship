@@ -1,5 +1,5 @@
-const { GameboardFactory } = require('./gameboard')
-const { PlayerFactory, ComputerPlayerFactory } = require('./player')
+const { GameboardFactory } = require('../gameboard')
+const { PlayerFactory, ComputerPlayerFactory } = require('../player')
 
 
 

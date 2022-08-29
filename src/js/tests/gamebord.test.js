@@ -1,5 +1,4 @@
-const { GameboardFactory } = require('./gameboard')
-
+const { GameboardFactory } = require('../gameboard')
 
 describe('Check Ship and HitSHip', () => {
 
