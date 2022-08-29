@@ -1,1 +1,2 @@
-console.log('big fat dog');
+import dom from './dom'
+
