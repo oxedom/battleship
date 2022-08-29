@@ -37,8 +37,8 @@ describe('Check Ship and HitSHip', () => {
 
     const testTwoGameBoard = GameboardFactory()
 
-    let arr1 = [4, 10, 40, 105]
-    let arr2 = [9, 11, 33, 155]
+    let arr1 = [4, 10, 40, 89]
+    let arr2 = [9, 11, 33, 77]
     testTwoGameBoard.placeShip(arr1)
     testTwoGameBoard.placeShip(arr2)
 
