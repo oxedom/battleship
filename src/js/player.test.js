@@ -22,6 +22,12 @@ describe('Attacking ship INIT', () => {
     })
 
 
+    //SHIP ONE DOWN
+    player.attackEnemy(gameboard, 4)
+    player.attackEnemy(gameboard, 5)
+    player.attackEnemy(gameboard, 6)
+
+
 
     test('Player attacking ships! 2 ', () => {
 
