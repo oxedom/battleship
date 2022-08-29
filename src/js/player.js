@@ -1,12 +1,9 @@
 const PlayerFactory = () => {
 
-    let turn = true
-    const attackEnemy = (enemyGameBoard, cords) => {
-        enemyGameBoard.receiveAttack(cords)
-    }
+    const attackEnemy = (enemyGameBoard, cord) => { enemyGameBoard.receiveAttack(cord) }
 
 
-    return { turn, attackEnemy }
+    return { attackEnemy }
 }
 
 module.exports = { PlayerFactory }

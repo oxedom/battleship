@@ -2,44 +2,29 @@ const { GameboardFactory } = require('./gameboard')
 const { PlayerFactory } = require('./player')
 
 
+const player = PlayerFactory()
+const gameboard = GameboardFactory()
+gameboard.placeShip([1, 2, 3, 4])
+gameboard.placeShip([4, 5, 6])
 
 
-describe('Player Attack ENEMY GAMEBOARD API', () => {
 
-    const attacker = PlayerFactory()
+//SHIP ONE DOWN
+player.attackEnemy(gameboard, 1)
+player.attackEnemy(gameboard, 2)
+player.attackEnemy(gameboard, 3)
+player.attackEnemy(gameboard, 4)
 
-    const enemyGameboard = GameboardFactory()
-    const enemyShip = [6, 7, 8, 9]
-    enemyGameboard.placeShip(enemyShip)
 
-    attacker.attackEnemy(enemyGameboard, 1)
-    attacker.attackEnemy(enemyGameboard, 3)
-    attacker.attackEnemy(enemyGameboard, 4)
-    test('Sunken Ships 1', () => {
-
-        expect(enemyGameboard.sunkenShips()).toEqual(false)
-    })
-
+test('Sunken Ships ', () => {
+    expect(gameboard.sunkenShips()).toEqual(false)
 })
 
-describe('Player Attack ENEMY GAMEBOARD API 2', () => {
+player.attackEnemy(gameboard, 4)
+player.attackEnemy(gameboard, 5)
+player.attackEnemy(gameboard, 6)
 
-    const attacker = PlayerFactory()
 
-    const enemyGameboardTwo = GameboardFactory()
-    const enemyShip2 = [6, 7, 8, 9]
-    enemyGameboardTwo.placeShip(enemyShip2)
-
-    attacker.attackEnemy(enemyGameboardTwo, 1)
-
-    attacker.attackEnemy(enemyGameboardTwo, 6)
-    attacker.attackEnemy(enemyGameboardTwo, 7)
-    attacker.attackEnemy(enemyGameboardTwo, 8)
-    attacker.attackEnemy(enemyGameboardTwo, 9)
-
-    test('Sunken Ships 2', () => {
-
-        expect(enemyGameboardTwo.sunkenShips()).toEqual(true)
-    })
-
+test('Sunken Ships 2 ', () => {
+    expect(gameboard.sunkenShips()).toEqual(true)
 })
