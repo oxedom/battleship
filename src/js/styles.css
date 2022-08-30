@@ -1,127 +1,124 @@
 @font-face {
-    font-family: battleFont;
-    src: url('/public/BigShouldersStencilText-Bold.ttf');
+  font-family: battleFont;
+  src: url("/public/BigShouldersStencilText-Bold.ttf");
 }
 
 @font-face {
-    font-family: ships;
-    src: url('/public/usnavy.ttf');
+  font-family: ships;
+  src: url("/public/usnavy.ttf");
 }
 
-
-body{
-    margin: 0;
-    padding: 0;
+body {
+  margin: 0;
+  padding: 0;
 }
 
 .gameboard {
-    padding: 10px;
-    background-color: rgb(135, 0, 0);
-    display: grid;
-    grid-template-columns: repeat(10,40px);
-    grid-template-rows: repeat(10,40px);
-    grid-gap: 5px;
-    border: 2px solid black;
+  padding: 10px;
+  background-color: rgb(135, 0, 0);
+  display: grid;
+  grid-template-columns: repeat(10, 40px);
+  grid-template-rows: repeat(10, 40px);
+  grid-gap: 5px;
+  border: 2px solid black;
 }
 
 .cell {
-
-    background-color: rgb(197, 180, 180);
-    border: 2px solid black;
+  background-color: rgb(197, 180, 180);
+  border: 2px solid black;
 }
 
 .miss {
-    background-color: darkblue;
+  background-color: darkblue;
 }
 
 .hit {
-    background-color: darkred;
+  background-color: darkred;
 }
 
-
 .center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .arena {
-display: flex;
-justify-content: space-around;
-align-items: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .header {
-    font-family: battleFont;
-    font-size: 72px;
-    text-align: center;
-    background-color: rgb(176, 22, 22);
-    border: 2px solid black;
-
+  font-family: battleFont;
+  font-size: 62px;
+  text-align: center;
+  background-color: rgb(176, 22, 22);
+  border: 2px solid black;
 }
 
 .ship {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 10px;
-    font-family: ships;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-family: ships;
+}
+
+.shipMenu {
 }
 
 .main {
-    display: flex;
-    min-height: 100vh;
-    background-color: rgb(128, 62, 62);
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  min-height: 100vh;
+  background-color: rgb(128, 62, 62);
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .footer {
-    display: flex;
-    justify-items: center;
-    justify-content: center;
-    padding: 10px;
-    margin-top: 100px;
-    border: 2px solid black;
-    background-color: rgb(126, 10, 10);
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin-top: 100px;
+  border: 2px solid black;
+  background-color: rgb(126, 10, 10);
 }
 
 .overlay {
-        position: absolute;
-        top: 0px;
-        right: 0px;
-        display: flex;
-        -webkit-box-align: center;
-        align-items: center;
-        -webkit-box-pack: center;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-        font-size: 3rem;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 3rem;
 }
 
 .card {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    -webkit-box-align: center;
-    align-items: center;
-    justify-content: space-around;
-    width: 500px;
-    height: 500px;
-    padding: 2rem;
-    background-color: rgb(221, 221, 221);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+
+  width: 500px;
+  height: 500px;
+  padding: 2rem;
+  background-color: #b52828;
 }
 
 .sidebar {
-
-    background-color: aqua;
+  background-color: aqua;
 }
 
 .container {
-    display: grid;
-    grid-template-columns: 1fr 3fr 4fr;
+  display: grid;
+  grid-template-columns: 1fr 3fr 4fr;
 
-    /* justify-content: space-around; */
+  /* justify-content: space-around; */
 }

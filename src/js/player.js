@@ -1,24 +1,22 @@
-const attackEnemy = (enemyGameBoard, cord) => { enemyGameBoard.receiveAttack(cord) }
+const attackEnemy = (enemyGameBoard, cord) => {
+  enemyGameBoard.receiveAttack(cord);
+};
 
 const PlayerFactory = () => {
+  let turn = true;
 
-    let turn = true
-
-
-    return { attackEnemy }
-}
+  return { attackEnemy };
+};
 
 const ComputerPlayerFactory = () => {
+  const computerAttack = (enemyGameBoard) => {
+    let randomCord = Math.floor(Math.random() * 100) + 1;
 
-    const computerAttack = (enemyGameBoard) => {
-        let randomCord = Math.floor(Math.random() * 100) + 1
-
-        if (enemyGameBoard.getMissed().includes(randomCord)) {
-            computerAttack(enemyGameBoard)
-        }
-
+    if (enemyGameBoard.getMissed().includes(randomCord)) {
+      computerAttack(enemyGameBoard);
     }
-    return { computerAttack }
-}
+  };
+  return { computerAttack };
+};
 
-module.exports = { PlayerFactory, ComputerPlayerFactory }
+module.exports = { PlayerFactory, ComputerPlayerFactory };

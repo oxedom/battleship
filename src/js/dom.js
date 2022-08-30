@@ -72,14 +72,6 @@ export default (function () {
         footer.classList.add('footer')
         return footer
     }
-    function changeCell(cell, boolean) {
-        if (boolean) {
-            cell.classList.add('hit')
-        }
-        else {
-            cell.classList.add('miss')
-        }
-    }
 
     function header() {
         const header = document.createElement('h1')
@@ -114,6 +106,7 @@ export default (function () {
             }
 
             ship.innerText = shipLeter
+
             return ship
         }
         else {
@@ -127,16 +120,17 @@ export default (function () {
         const cardElement = document.createElement('div')
         cardElement.classList.add('card')
 
-        const h3 = document.createElement('h3')
-        h3.innerText = 'Welcome to Battleship'
-        const p = document.createElement('p')
-        p.innerText = 'Enter your ships XY'
+        const h4 = document.createElement('h4')
+        h4.innerText = 'Welcome to Battleship'
+        // const shipsMenuEl = shipMenu()
         const button = document.createElement('button')
         button.innerText = 'rotate'
-        cardElement.append(h3, p, button)
+        cardElement.append(h4, button)
 
         return cardElement
     }
+
+
 
     function welcome() {
         const overlay = document.createElement('div')
@@ -148,9 +142,6 @@ export default (function () {
     }
 
 
-
-
-
     function init() {
 
 
@@ -158,23 +149,16 @@ export default (function () {
         let headerElement = header()
         let arenaElement = arena()
         let gameboardOne = playerGameboard();
-        let gameboardTwo = computerGameboard();
         let footerElement = footer()
-        arenaElement.append(gameboardOne, gameboardTwo)
-
-
+        arenaElement.append(gameboardOne)
         mainElement.append(headerElement, arenaElement, footerElement)
+        content.append(mainElement)
+        //ADD MOVES TO ARENA ELEMENT
 
-        return mainElement
     }
 
-    pubsub.subscribe('cellClicked', changeCell)
 
-
-    content.append(init())
-
-
-
+    init()
 
 
 
