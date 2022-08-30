@@ -111,6 +111,35 @@ export default (function () {
 
     }
 
+
+    function card() {
+        const cardElement = document.createElement('div')
+        cardElement.classList.add('card')
+
+        const h3 = document.createElement('h3')
+        h3.innerText = 'Welcome to Battleship'
+        const p = document.createElement('p')
+        p.innerText = 'Place your ship'
+        const button = document.createElement('button')
+        button.innerText = 'rotate'
+        cardElement.append(h3, p, button)
+
+        return cardElement
+    }
+
+    function welcome() {
+        const overlay = document.createElement('div')
+
+        overlay.classList.add('overlay')
+
+        overlay.append(card())
+        return overlay
+    }
+
+
+
+
+
     function init() {
 
 
@@ -121,7 +150,7 @@ export default (function () {
         let gameboardTwo = computerGameboard();
         let footerElement = footer()
         arenaElement.append(gameboardOne, gameboardTwo)
-        mainElement.append(headerElement, arenaElement, footerElement)
+        mainElement.append(welcome(), headerElement, arenaElement, footerElement)
 
         return mainElement
     }

@@ -79,3 +79,32 @@ justify-content: space-around;
     margin-top: 500px;
     background-color: rgb(203, 199, 194);
 }
+
+.overlay {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        font-size: 3rem;
+}
+
+.card {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    justify-content: space-around;
+    width: 500px;
+    height: 500px;
+    padding: 2rem;
+    background-color: rgb(221, 221, 221);
+}
+
