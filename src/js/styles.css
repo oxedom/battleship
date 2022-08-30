@@ -9,24 +9,25 @@
 }
 
 
-
-.body{
+body{
     margin: 0;
     padding: 0;
 }
 
 .gameboard {
-    background-color: grey;
+    padding: 10px;
+    background-color: rgb(135, 0, 0);
     display: grid;
-    grid-template-columns: repeat(10,150px);
-    grid-template-rows: repeat(10,150px);
+    grid-template-columns: repeat(10,40px);
+    grid-template-rows: repeat(10,40px);
     grid-gap: 5px;
+    border: 2px solid black;
 }
 
 .cell {
-    color: rgb(185, 167, 167);
-    padding: 50px;
-    border: 1px solid;
+
+    background-color: rgb(197, 180, 180);
+    border: 2px solid black;
 }
 
 .miss {
@@ -46,27 +47,31 @@
 
 .arena {
 display: flex;
-padding: 50px;
 justify-content: space-around;
+align-items: center;
 }
 
 .header {
     font-family: battleFont;
-    font-size: 300px;
+    font-size: 72px;
     text-align: center;
+    background-color: rgb(176, 22, 22);
+    border: 2px solid black;
+
 }
 
 .ship {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 50px;
+    font-size: 10px;
     font-family: ships;
 }
 
 .main {
     display: flex;
     min-height: 100vh;
+    background-color: rgb(128, 62, 62);
     flex-direction: column;
     justify-content: space-between;
 }
@@ -75,9 +80,10 @@ justify-content: space-around;
     display: flex;
     justify-items: center;
     justify-content: center;
-    padding: 100px;
-    margin-top: 500px;
-    background-color: rgb(203, 199, 194);
+    padding: 10px;
+    margin-top: 100px;
+    border: 2px solid black;
+    background-color: rgb(126, 10, 10);
 }
 
 .overlay {
@@ -108,3 +114,14 @@ justify-content: space-around;
     background-color: rgb(221, 221, 221);
 }
 
+.sidebar {
+
+    background-color: aqua;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 4fr;
+
+    /* justify-content: space-around; */
+}

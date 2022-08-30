@@ -16,7 +16,18 @@ export default (function () {
         const arena = document.createElement('div')
         arena.classList.add('arena')
 
+
+
+
         return arena
+    }
+
+    function sidebar() {
+        const sidebarElement = document.createElement('nav')
+        sidebarElement.classList.add('sidebar')
+        sidebarElement.innerText = 'asss'
+
+        return sidebarElement
     }
 
     const _createGameboard = () => {
@@ -119,7 +130,7 @@ export default (function () {
         const h3 = document.createElement('h3')
         h3.innerText = 'Welcome to Battleship'
         const p = document.createElement('p')
-        p.innerText = 'Place your ship'
+        p.innerText = 'Enter your ships XY'
         const button = document.createElement('button')
         button.innerText = 'rotate'
         cardElement.append(h3, p, button)
@@ -150,7 +161,9 @@ export default (function () {
         let gameboardTwo = computerGameboard();
         let footerElement = footer()
         arenaElement.append(gameboardOne, gameboardTwo)
-        mainElement.append(welcome(), headerElement, arenaElement, footerElement)
+
+
+        mainElement.append(headerElement, arenaElement, footerElement)
 
         return mainElement
     }
