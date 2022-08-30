@@ -1,3 +1,20 @@
+@font-face {
+    font-family: battleFont;
+    src: url('/public/BigShouldersStencilText-Bold.ttf');
+}
+
+@font-face {
+    font-family: ships;
+    src: url('/public/usnavy.ttf');
+}
+
+
+
+.body{
+    margin: 0;
+    padding: 0;
+}
+
 .gameboard {
     background-color: grey;
     display: grid;
@@ -12,8 +29,27 @@
     border: 1px solid;
 }
 
+.miss {
+    background-color: darkblue;
+}
+
+.hit {
+    background-color: darkred;
+}
+
+
 .center {
     display: flex;
+    align-items: center;
     justify-content: center;
 }
 
+.arena {
+display: flex;
+padding: 50px;
+justify-content: space-around;
+}
+
+.header {
+    font-family: battleFont;
+}
