@@ -1,35 +1,66 @@
 import './styles.css'
 import { pubsub } from './pubsub';
+
 export default (function () {
     'use strict';
     const content = document.getElementById('content')
 
+    const main = () => {
+        const main = document.createElement('main')
+        main.classList.add('main')
+
+        return main
+    }
 
     const arena = () => {
         const arena = document.createElement('div')
         arena.classList.add('arena')
 
-
         return arena
     }
 
-    const createGameboard = () => {
+    const _createGameboard = () => {
         let board = document.createElement('div')
         board.classList.add('gameboard')
 
         for (let index = 0; index < 100; index++) {
 
             let cell = document.createElement('div')
-            cell.setAttribute('id', index + 1)
+
             cell.classList.add('cell'),
-                cell.addEventListener('click', (e) => { pubsub.publish("cellClicked", e) })
-            board.append(cell)
+                // cell.addEventListener('click', (e) => { pubsub.publish("cellClicked", e) })
+                board.append(cell)
         }
         return board
 
 
     }
 
+    const computerGameboard = () => {
+        return _createGameboard()
+    }
+
+    const playerGameboard = () => {
+        let gameboard = _createGameboard()
+        let i = 1
+        gameboard.querySelectorAll('div').forEach(cell => {
+            cell.setAttribute('id', i)
+            i++
+            cell.addEventListener('click', (e) => {
+                let cellID = e.composedPath()[0].id
+                pubsub.publish('cellClick', cellID)
+
+            })
+        })
+        return gameboard
+    }
+
+
+    function footer() {
+        let footer = document.createElement('footer')
+        footer.classList.add('footer')
+        return footer
+    }
     function changeCell(cell, boolean) {
         if (boolean) {
             cell.classList.add('hit')
@@ -39,13 +70,60 @@ export default (function () {
         }
     }
 
+    function header() {
+        const header = document.createElement('h1')
+        header.classList.add('header')
+        header.innerText = 'BATTLESHIP'
+
+        return header
+    }
+
+    function ship(value) {
+        let ship = undefined
+        if (6 > value > 0) {
+            ship = document.createElement('span')
+            ship.classList.add('ship')
+            let shipLeter = undefined
+            switch (value) {
+                case 1:
+                    shipLeter = 'a'
+                    break;
+                case 2:
+                    shipLeter = 'b'
+                    break;
+                case 3:
+                    shipLeter = 'c'
+                    break;
+                case 4:
+                    shipLeter = 'd'
+                    break;
+                case 5:
+                    shipLeter = 'e'
+                    break;
+            }
+
+            ship.innerText = shipLeter
+            return ship
+        }
+        else {
+            return new Error('NO SUCH SHIP');
+        }
+
+    }
 
     function init() {
+
+
+        let mainElement = main()
+        let headerElement = header()
         let arenaElement = arena()
-        let gameboardOne = createGameboard()
-        let gameboardTwo = createGameboard()
+        let gameboardOne = playerGameboard();
+        let gameboardTwo = computerGameboard();
+        let footerElement = footer()
         arenaElement.append(gameboardOne, gameboardTwo)
-        return arenaElement
+        mainElement.append(headerElement, arenaElement, footerElement)
+
+        return mainElement
     }
 
     pubsub.subscribe('cellClicked', changeCell)

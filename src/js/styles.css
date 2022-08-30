@@ -18,8 +18,8 @@
 .gameboard {
     background-color: grey;
     display: grid;
-    grid-template-columns: repeat(10,250px);
-    grid-template-rows: repeat(10,250px);
+    grid-template-columns: repeat(10,150px);
+    grid-template-rows: repeat(10,150px);
     grid-gap: 5px;
 }
 
@@ -52,4 +52,30 @@ justify-content: space-around;
 
 .header {
     font-family: battleFont;
+    font-size: 300px;
+    text-align: center;
+}
+
+.ship {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    font-family: ships;
+}
+
+.main {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.footer {
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    padding: 100px;
+    margin-top: 500px;
+    background-color: rgb(203, 199, 194);
 }
