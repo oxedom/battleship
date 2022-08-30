@@ -1,0 +1,19 @@
+.gameboard {
+    background-color: grey;
+    display: grid;
+    grid-template-columns: repeat(10,250px);
+    grid-template-rows: repeat(10,250px);
+    grid-gap: 5px;
+}
+
+.cell {
+    color: rgb(185, 167, 167);
+    padding: 50px;
+    border: 1px solid;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
