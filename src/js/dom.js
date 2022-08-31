@@ -3,6 +3,13 @@ import { pubsub } from './pubsub';
 
 export const dom = (function () {
     'use strict';
+    let state =
+    {
+        direction: 'row',
+        selectedShip: undefined,
+
+    }
+
     const content = document.getElementById('content')
 
     const main = () => {
@@ -22,16 +29,10 @@ export const dom = (function () {
     const _createGameboard = () => {
         let board = document.createElement('div')
         board.classList.add('gameboard')
-
+        board.classList.add('red')
         for (let index = 0; index < 100; index++) {
-
             let cell = document.createElement('div')
-            cell.addEventListener('hover', (e) => {
-                e.preventDefault()
-
-            })
             cell.classList.add('cell'),
-                // cell.addEventListener('click', (e) => { pubsub.publish("cellClicked", e) })
                 board.append(cell)
         }
         return board
@@ -39,34 +40,11 @@ export const dom = (function () {
 
     }
 
-    const computerGameboard = () => {
-        const gameboard = _createGameboard()
-        gameboard.classList.add('blue')
-        return gameboard
-    }
-
-    const playerGameboard = () => {
-        let gameboard = _createGameboard()
-        gameboard.classList.add('red')
-        let i = 1
-        gameboard.querySelectorAll('div').forEach(cell => {
-            cell.setAttribute('id', i)
-            i++
-            cell.addEventListener('click', (e) => {
-                let cellID = e.composedPath()[0].id
-                pubsub.publish('cellClick', cellID)
-
-            })
-        })
-        return gameboard
-    }
 
     const arsenal = () => {
         const container = document.createElement('div')
         container.setAttribute('id', 'arsenal')
         container.classList.add('arsenal')
-
-
         const ships = [ship(1), ship(2), ship(3), ship(4), ship(5)]
         ships.forEach(ship => {
             let shipLength = ship.id
@@ -74,18 +52,10 @@ export const dom = (function () {
             p.innerText = shipLength
             p.classList.add('shipLength')
             ship.appendChild(p)
-
-            ship.addEventListener('click', (e) => {
-
-
-
-
-                ships.forEach(ship => ship.classList.remove('dragging'))
-                ship.classList.add('dragging')
-                pubsub.publish('shipSelected', shipLength)
-                console.log(shipLength);
+            ship.addEventListener('click', () => {
+                ships.forEach(ship => ship.classList.remove('selected'))
+                ship.classList.add('selected')
             })
-
         })
         container.append(...ships)
 
@@ -144,60 +114,33 @@ export const dom = (function () {
     }
 
 
-    function card() {
-        const cardElement = document.createElement('div')
-        cardElement.classList.add('card')
 
-        const h4 = document.createElement('h4')
-        h4.innerText = 'Welcome to Battleship'
-        // const shipsMenuEl = shipMenu()
-        const button = document.createElement('button')
-        button.innerText = 'rotate'
-        cardElement.append(h4, button)
-
-        return cardElement
-    }
-
-
-    function addHover(length, axis) {
-        const cells = document.querySelectorAll('.cell')
-        const removeClass = () => { cells.forEach(cell => cell.classList.remove('miss')) }
-        const placeCells = (length, e) => {
-            for (let index = 0; index < length; index++) {
-                document.getElementById(parseInt(e.target.id) + index).classList.add('miss')
-            }
-        }
-        // cells.forEach(cell => { cell.removeEventListener('hover') })
-        cells.forEach(cell => cell.addEventListener('mouseover', (e) => {
-            removeClass()
-            placeCells(length, e)
-
-        }))
-
-    }
 
     function init() {
 
 
         let mainElement = main()
-
         let headerElement = header()
+        let footerElement = footer()
 
-        let arenaElement = arena()
-        let gameboardOne = playerGameboard();
+        let playerGameboard = _createGameboard()
+        let enemyGameboard = _createGameboard()
+
         let arsenalElement = arsenal()
 
 
 
-        let footerElement = footer()
-        arenaElement.append(gameboardOne)
-        mainElement.append(headerElement, arenaElement, arsenalElement, footerElement)
+        let arenaElement = arena()
+
+        arenaElement.append(playerGameboard, enemyGameboard)
+
+
+
+        mainElement.append(headerElement, arsenalElement, arenaElement, footerElement)
         content.append(mainElement)
         //ADD MOVES TO ARENA ELEMENT
 
     }
-
-    pubsub.subscribe('shipSelected', addHover)
 
     return { init, main };
 })();

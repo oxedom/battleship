@@ -91,12 +91,15 @@ body {
 }
 
 .arsenal {
+  position: absolute;
+  margin-left: 30px;
+  top: 40px;
   display: flex;
   justify-content: center;
   gap: 50px;
 }
 
-.dragging {
+.selected {
   opacity: .5;
 }
 
