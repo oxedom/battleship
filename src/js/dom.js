@@ -1,12 +1,13 @@
 import './styles.css'
 import { pubsub } from './pubsub';
+import { doc } from 'prettier';
 
 
 export const dom = (function () {
     'use strict';
     let state =
     {
-        direction: 'row',
+        direction: 'column',
         selectedShip: undefined,
         playerBoardBuilt: false,
         gameStart: false
@@ -64,6 +65,19 @@ export const dom = (function () {
 
 
     const arsenal = () => {
+        const button = document.createElement('button')
+        button.value = 'CHANGE DIRECTION'
+        button.classList.add('flip-btn')
+        button.innerText = 'FLIP'
+        button.addEventListener('click', (e) => {
+            if (state.direction == 'row') {
+                state.direction = 'column'
+            }
+            else {
+                state.direction = 'row'
+            }
+        })
+
         const container = document.createElement('div')
         container.setAttribute('id', 'arsenal')
         container.classList.add('arsenal')
@@ -81,7 +95,7 @@ export const dom = (function () {
                 pubsub.publish('selectedShip', ship.attributes[1].value)
             })
         })
-        container.append(...ships)
+        container.append(...ships, button)
 
         return container
     }
@@ -92,20 +106,29 @@ export const dom = (function () {
     function setShip(shipLength) { state.selectedShip = shipLength }
 
     function handleCell(e) {
+        let clickedCell = parseInt(e.target.id)
+        let cellCords = []
         //WILL ACTIVATE IF GAME STARTED IS FALSE AND THERE IS A SHIP SELECTED
-        if (!state.gameStart && state.selectedShip) {
-            let clickedCell = parseInt(e.target.id)
+        if (!state.gameStart && state.selectedShip && state.direction == 'row') {
 
-            let cellCords = []
+
             for (let index = 0; index < state.selectedShip; index++) {
                 cellCords.push(clickedCell)
                 clickedCell = clickedCell + 1
             }
             paintCells(cellCords, state.selectedShip)
         }
+        else if (!state.gameStart && state.selectedShip && state.direction == 'column') {
+            for (let index = 0; index < state.selectedShip; index++) {
+                cellCords.push(clickedCell)
+                clickedCell = clickedCell + 10
+            }
+            paintCells(cellCords, state.selectedShip)
+        }
     }
 
     function paintCells(cellCords, amount) {
+
         const cells = document.querySelectorAll('.cell').forEach(cell => cell.classList.remove('cellected'))
         cellCords.forEach(cell => document.getElementById(`${cell}`).classList.add('cellected'))
 

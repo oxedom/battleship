@@ -99,7 +99,16 @@ body {
   justify-content: center;
   gap: 50px;
 }
-
+.flip-btn {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  background-color: rgba(255, 255, 255, 0.995);
+  border: 1px black solid;
+  font-size: 20px;
+  position: absolute;
+  padding: 5px;
+  top: 25px;
+  left: 530px;
+}
 .selected {
   opacity: .5;
 }
