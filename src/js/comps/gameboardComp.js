@@ -11,7 +11,7 @@ export const gameboard = () => {
         let cell = document.createElement('div')
         cell.classList.add('cell')
         board.append(cell)
-        if (!false) {
+        if (stateObject.getGameStage()) {
             cell.addEventListener('click', (e) => { pubsub.publish('cellClicked', e) })
             cell.setAttribute('id', index + 1)
         }

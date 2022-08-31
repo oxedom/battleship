@@ -1,4 +1,7 @@
+import { pubsub } from "./pubsub"
+
 export const stateObject = (function () {
+
 
     let direction = 'column'
     let selectedShip = undefined
@@ -12,11 +15,17 @@ export const stateObject = (function () {
     const getGameStage = () => { return gameStart }
 
     const setDirection = () => {
-        if (direction === 'row') { state.direction = 'column' }
-        else { direction === ' column' }
+        if (direction === 'row') { direction = 'column' }
+        if (direction === 'column') { direction = 'row' }
+
     }
 
     const setShip = (length) => { selectedShip = length }
+
+
+    //PUBSUBS
+    pubsub.subscribe('changeDirection', setDirection)
+
 
     return { getDirection, getSelectedShip, getplayerBoardBuilt, getGameStage, setDirection, setShip }
 })()
