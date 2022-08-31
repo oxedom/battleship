@@ -25,7 +25,9 @@ export const stateObject = (function () {
     const setShip = (length) => { selectedShip = length }
 
 
+
     //PUBSUBS
+    pubsub.subscribe('selectedShip', setShip)
     pubsub.subscribe('changeDirection', setDirection)
     pubsub.subscribe('playerBoardInit', setPlayerboard)
 
