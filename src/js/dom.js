@@ -28,6 +28,7 @@ export const dom = (function () {
             let cell = document.createElement('div')
             cell.addEventListener('dragover', () => {
                 e.preventDefault()
+
                 const draggable = document.querySelector('.dragging')
                 console.log(draggable.id);
             })
