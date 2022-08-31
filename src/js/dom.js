@@ -26,11 +26,9 @@ export const dom = (function () {
         for (let index = 0; index < 100; index++) {
 
             let cell = document.createElement('div')
-            cell.addEventListener('dragover', () => {
+            cell.addEventListener('hover', (e) => {
                 e.preventDefault()
 
-                const draggable = document.querySelector('.dragging')
-                console.log(draggable.id);
             })
             cell.classList.add('cell'),
                 // cell.addEventListener('click', (e) => { pubsub.publish("cellClicked", e) })
@@ -68,20 +66,25 @@ export const dom = (function () {
         container.setAttribute('id', 'arsenal')
         container.classList.add('arsenal')
 
+
         const ships = [ship(1), ship(2), ship(3), ship(4), ship(5)]
         ships.forEach(ship => {
+            let shipLength = ship.id
+            const p = document.createElement('p')
+            p.innerText = shipLength
+            p.classList.add('shipLength')
+            ship.appendChild(p)
 
-            ship.addEventListener('dragstart', (e) => {
+            ship.addEventListener('click', (e) => {
+
+
+
+
+                ships.forEach(ship => ship.classList.remove('dragging'))
                 ship.classList.add('dragging')
-                let shipLength = e.target.id
+                pubsub.publish('shipSelected', shipLength)
                 console.log(shipLength);
             })
-
-            ship.addEventListener('dragend', (e) => {
-                ship.classList.remove('dragging')
-            })
-
-
 
         })
         container.append(...ships)
@@ -156,16 +159,22 @@ export const dom = (function () {
     }
 
 
+    function addHover(length, axis) {
+        const cells = document.querySelectorAll('.cell')
+        const removeClass = () => { cells.forEach(cell => cell.classList.remove('miss')) }
+        const placeCells = (length, e) => {
+            for (let index = 0; index < length; index++) {
+                document.getElementById(parseInt(e.target.id) + index).classList.add('miss')
+            }
+        }
+        // cells.forEach(cell => { cell.removeEventListener('hover') })
+        cells.forEach(cell => cell.addEventListener('mouseover', (e) => {
+            removeClass()
+            placeCells(length, e)
 
-    function welcome() {
-        const overlay = document.createElement('div')
+        }))
 
-        overlay.classList.add('overlay')
-
-        overlay.append(card())
-        return overlay
     }
-
 
     function init() {
 
@@ -187,6 +196,8 @@ export const dom = (function () {
         //ADD MOVES TO ARENA ELEMENT
 
     }
+
+    pubsub.subscribe('shipSelected', addHover)
 
     return { init, main };
 })();

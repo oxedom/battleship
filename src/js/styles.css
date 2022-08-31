@@ -64,6 +64,7 @@ body {
 
 .ship {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: 20px;
@@ -99,3 +100,7 @@ body {
   opacity: .5;
 }
 
+.shipLength{
+  font-weight: 400;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
