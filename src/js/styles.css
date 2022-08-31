@@ -14,12 +14,17 @@ body {
 }
 
 .gameboard {
+  display: flex;
+  flex-direction: column;
   padding: 10px;
-  display: grid;
-  grid-template-columns: repeat(10, 40px);
-  grid-template-rows: repeat(10, 40px);
-  grid-gap: 5px;
+  gap: 5px;
   border: 2px solid black;
+}
+
+.row {
+  display: flex;
+  
+  gap: 5px;
 }
 
 .red {
@@ -30,8 +35,10 @@ body {
 }
 
 .cell {
+  
   background-color: rgb(197, 180, 180);
   border: 2px solid black;
+  padding: 15px;
 }
 
 .miss {
