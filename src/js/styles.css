@@ -15,12 +15,18 @@ body {
 
 .gameboard {
   padding: 10px;
-  background-color: rgb(135, 0, 0);
   display: grid;
   grid-template-columns: repeat(10, 40px);
   grid-template-rows: repeat(10, 40px);
   grid-gap: 5px;
   border: 2px solid black;
+}
+
+.red {
+  background-color: rgb(135, 0, 0);}
+
+.blue {
+  background-color: rgb(22, 22, 67);
 }
 
 .cell {
@@ -64,8 +70,6 @@ body {
   font-family: ships;
 }
 
-.shipMenu {
-}
 
 .main {
   display: flex;
@@ -85,40 +89,13 @@ body {
   background-color: rgb(126, 10, 10);
 }
 
-.overlay {
-  position: absolute;
-  top: 0px;
-  right: 0px;
+.arsenal {
   display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
-  font-size: 3rem;
+  gap: 50px;
 }
 
-.card {
-  text-align: center;
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-
-  width: 500px;
-  height: 500px;
-  padding: 2rem;
-  background-color: #b52828;
+.dragging {
+  opacity: .5;
 }
 
-.sidebar {
-  background-color: aqua;
-}
-
-.container {
-  display: grid;
-  grid-template-columns: 1fr 3fr 4fr;
-
-  /* justify-content: space-around; */
-}

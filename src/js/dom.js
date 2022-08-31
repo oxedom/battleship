@@ -1,7 +1,7 @@
 import './styles.css'
 import { pubsub } from './pubsub';
 
-export default (function () {
+export const dom = (function () {
     'use strict';
     const content = document.getElementById('content')
 
@@ -15,20 +15,9 @@ export default (function () {
     const arena = () => {
         const arena = document.createElement('div')
         arena.classList.add('arena')
-
-
-
-
         return arena
     }
 
-    function sidebar() {
-        const sidebarElement = document.createElement('nav')
-        sidebarElement.classList.add('sidebar')
-        sidebarElement.innerText = 'asss'
-
-        return sidebarElement
-    }
 
     const _createGameboard = () => {
         let board = document.createElement('div')
@@ -37,7 +26,11 @@ export default (function () {
         for (let index = 0; index < 100; index++) {
 
             let cell = document.createElement('div')
-
+            cell.addEventListener('dragover', () => {
+                e.preventDefault()
+                const draggable = document.querySelector('.dragging')
+                console.log(draggable.id);
+            })
             cell.classList.add('cell'),
                 // cell.addEventListener('click', (e) => { pubsub.publish("cellClicked", e) })
                 board.append(cell)
@@ -48,11 +41,14 @@ export default (function () {
     }
 
     const computerGameboard = () => {
-        return _createGameboard()
+        const gameboard = _createGameboard()
+        gameboard.classList.add('blue')
+        return gameboard
     }
 
     const playerGameboard = () => {
         let gameboard = _createGameboard()
+        gameboard.classList.add('red')
         let i = 1
         gameboard.querySelectorAll('div').forEach(cell => {
             cell.setAttribute('id', i)
@@ -64,6 +60,32 @@ export default (function () {
             })
         })
         return gameboard
+    }
+
+    const arsenal = () => {
+        const container = document.createElement('div')
+        container.setAttribute('id', 'arsenal')
+        container.classList.add('arsenal')
+
+        const ships = [ship(1), ship(2), ship(3), ship(4), ship(5)]
+        ships.forEach(ship => {
+
+            ship.addEventListener('dragstart', (e) => {
+                ship.classList.add('dragging')
+                let shipLength = e.target.id
+                console.log(shipLength);
+            })
+
+            ship.addEventListener('dragend', (e) => {
+                ship.classList.remove('dragging')
+            })
+
+
+
+        })
+        container.append(...ships)
+
+        return container
     }
 
 
@@ -106,7 +128,9 @@ export default (function () {
             }
 
             ship.innerText = shipLeter
-
+            ship.setAttribute('id', value)
+            ship.setAttribute('value', value)
+            ship.setAttribute('draggable', true)
             return ship
         }
         else {
@@ -146,21 +170,22 @@ export default (function () {
 
 
         let mainElement = main()
+
         let headerElement = header()
+
         let arenaElement = arena()
         let gameboardOne = playerGameboard();
+        let arsenalElement = arsenal()
+
+
+
         let footerElement = footer()
         arenaElement.append(gameboardOne)
-        mainElement.append(headerElement, arenaElement, footerElement)
+        mainElement.append(headerElement, arenaElement, arsenalElement, footerElement)
         content.append(mainElement)
         //ADD MOVES TO ARENA ELEMENT
 
     }
 
-
-    init()
-
-
-
-
+    return { init, main };
 })();
