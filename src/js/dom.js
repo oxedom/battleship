@@ -7,6 +7,8 @@ export const dom = (function () {
     {
         direction: 'row',
         selectedShip: undefined,
+        playerBoardBuilt: false,
+
 
     }
 
@@ -32,9 +34,13 @@ export const dom = (function () {
         board.classList.add('red')
         for (let index = 0; index < 100; index++) {
             let cell = document.createElement('div')
-            cell.classList.add('cell'),
-                board.append(cell)
+            cell.classList.add('cell')
+            board.append(cell)
+            if (!state.playerBoardBuilt) {
+                cell.setAttribute('id', index + 1)
+            }
         }
+        state.playerBoardBuilt = true
         return board
 
 
@@ -55,12 +61,17 @@ export const dom = (function () {
             ship.addEventListener('click', () => {
                 ships.forEach(ship => ship.classList.remove('selected'))
                 ship.classList.add('selected')
+                pubsub.publish('selectedShip', ship.id)
             })
         })
         container.append(...ships)
 
         return container
     }
+
+    pubsub.subscribe('selectedShip', setShip)
+
+    function setShip(shipLength) { state.selectedShip = shipLength }
 
 
     function footer() {

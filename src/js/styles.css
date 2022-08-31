@@ -103,6 +103,10 @@ body {
   opacity: .5;
 }
 
+.cellected {
+  background-color: goldenrod;
+}
+
 .shipLength{
   font-weight: 400;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
