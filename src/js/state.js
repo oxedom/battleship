@@ -16,8 +16,14 @@ export const stateObject = (function () {
     const getGameStage = () => { return gameStart }
 
     const setDirection = () => {
-        if (direction === 'row') { direction = 'column' }
-        if (direction === 'column') { direction = 'row' }
+        console.log('SET DIRECTION FIRED');
+        console.log(direction);
+        if (direction == 'row') {
+            return direction = 'column'
+        }
+        if (direction == 'column') {
+            return direction = 'row'
+        }
     }
     const setComputerBoard = () => computerBoardBuilt = true
     const setPlayerboard = () => playerBoardBuilt = true
@@ -26,11 +32,14 @@ export const stateObject = (function () {
 
     function handleCell(event) {
         if (selectedShip == undefined) { return }
+        let cellID = event.target.getAttribute('id')
         let row = event.target.getAttribute('row')
         let column = event.target.getAttribute('column')
         let legal = checkLegalMove(row, column, getSelectedShip(), getDirection())
-        console.log(row, column, getSelectedShip(), getDirection());
-        alert(legal)
+        if (legal) {
+            pubsub.publish('paintCells', cellID)
+
+        }
     }
 
 
