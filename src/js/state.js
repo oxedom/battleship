@@ -18,7 +18,6 @@ export const stateObject = (function () {
     const setDirection = () => {
         if (direction === 'row') { direction = 'column' }
         if (direction === 'column') { direction = 'row' }
-
     }
     const setComputerBoard = () => computerBoardBuilt = true
     const setPlayerboard = () => playerBoardBuilt = true

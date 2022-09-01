@@ -15,6 +15,19 @@ const compare = function (arr1, arr2) {
   return answer;
 };
 
+const XYtoIndex = function (row, column) {
+  let i = undefined
+  i = column + 10 * (row - 1)
+
+  return i
+}
+
+const checkLegalMove = (row, column, shipLength, direction) => {
+  let answer = undefined
+  if (shipLength == 1) { return true }
 
 
-module.exports = { compare };
+  return answer
+}
+
+module.exports = { compare, XYtoIndex, checkLegalMove };
