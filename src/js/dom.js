@@ -14,9 +14,6 @@ export const dom = (function () {
     }
 
 
-
-
-
     function paintCells(cellID) {
 
         let cell = document.getElementById(cellID)
@@ -24,6 +21,11 @@ export const dom = (function () {
         let shipLength = stateObject.getSelectedShip()
 
         if (cell.classList.contains('cellected')) { return }
+        if (shipLength != 1) {
+            if (cell.nextElementSibling.classList.contains('cellected') && stateObject.getDirection() == 'row') { return }
+            if (document.getElementById(`${parseInt(cellID) + 10}`).classList.contains('cellected') && stateObject.getDirection() == 'column') { return }
+        }
+
         if (stateObject.getDirection() === 'row') {
             cell.classList.add('cellected')
             cell.setAttribute('marked', true)
