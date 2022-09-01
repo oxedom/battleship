@@ -25,9 +25,38 @@ const XYtoIndex = function (row, column) {
 const checkLegalMove = (row, column, shipLength, direction) => {
   let answer = undefined
   if (shipLength == 1) { return true }
+  //ROW CASE
+  if (direction === 'row') {
+    if ((shipLength + column) > 11) {
+      answer = false
+      return answer
+    }
+    else { answer = true }
 
+  }
+  //COLUMN CASE
+  if (direction === 'column') {
+    if ((shipLength + row) > 11) {
+      answer = false
+      return answer
+    }
+    else { answer = true }
+  }
 
   return answer
 }
 
-module.exports = { compare, XYtoIndex, checkLegalMove };
+const legalToMove = (row, column, shipLength, direction) => {
+  let index = undefined
+  if (checkLegalMove(row, column, shipLength, direction)) {
+    index = XYtoIndex(row, column)
+  }
+  else {
+    index == "ILEGAL"
+  }
+  return index
+}
+
+
+
+module.exports = { compare, XYtoIndex, checkLegalMove, legalToMove };
