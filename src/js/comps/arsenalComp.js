@@ -29,7 +29,7 @@ export const arsenal = () => {
 
             ship.innerText = shipLeter
             ship.setAttribute('value', value)
-            ship.setAttribute('draggable', true)
+            ship.setAttribute('id', `ship_${value}`)
             return ship
         }
         else {

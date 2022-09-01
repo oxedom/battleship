@@ -49,7 +49,7 @@ export const stateObject = (function () {
     pubsub.subscribe('selectedShip', setShip)
     pubsub.subscribe('changeDirection', setDirection)
     pubsub.subscribe('playerBoardInit', setPlayerboard)
-
+    pubsub.subscribe('removedShip', setShip)
     return {
         getDirection, getSelectedShip,
         getplayerBoardBuilt, getGameStage,
