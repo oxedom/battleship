@@ -104,3 +104,13 @@ test("Check Legal 7 ", () => {
 
     expect(checkLegalMove(row, column, ship, direction)).toEqual(answer);
 });
+
+test("Check Legal 7 ", () => {
+    const direction = 'column'
+    const row = 1
+    const column = 1
+    const ship = 5
+    const answer = true
+
+    expect(checkLegalMove(row, column, ship, direction)).toEqual(answer);
+});

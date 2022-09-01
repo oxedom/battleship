@@ -26,12 +26,16 @@ const XYtoIndex = function (row, column) {
 
 const checkLegalMove = (row, column, shipLength, direction) => {
   let answer = undefined
-  if (shipLength == 1) { return true }
+
+  shipLength = parseInt(shipLength)
+  row = parseInt(row)
+  column = parseInt(column)
+
+  if (shipLength === 1) { return true }
   //ROW CASE
   if (direction === 'row') {
     if ((shipLength + column) > 11) {
       answer = false
-      return answer
     }
     else { answer = true }
 
@@ -40,24 +44,12 @@ const checkLegalMove = (row, column, shipLength, direction) => {
   if (direction === 'column') {
     if ((shipLength + row) > 11) {
       answer = false
-      return answer
     }
     else { answer = true }
   }
-
+  console.log(`INNER LOG ROW: ${row} COLUMN ${column} DIRECTION ${direction}, LENGTH : ${shipLength}`);
   return answer
 }
 
-const legalToMove = (row, column, shipLength, direction) => {
-  let index = undefined
-  if (checkLegalMove(row, column, shipLength, direction)) {
-    index = XYtoIndex(row, column)
-  }
-  else {
-    index == "ILEGAL"
-  }
-  return index
-}
 
-
-module.exports = { compare, XYtoIndex, checkLegalMove, legalToMove };
+module.exports = { compare, XYtoIndex, checkLegalMove };

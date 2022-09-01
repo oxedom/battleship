@@ -1,5 +1,5 @@
 import { pubsub } from "./pubsub"
-
+import { checkLegalMove } from "./libs"
 export const stateObject = (function () {
 
 
@@ -24,8 +24,19 @@ export const stateObject = (function () {
     const setShip = (length) => { selectedShip = length }
 
 
+    function handleCell(event) {
+        if (selectedShip == undefined) { return }
+        let row = event.target.getAttribute('row')
+        let column = event.target.getAttribute('column')
+        let legal = checkLegalMove(row, column, getSelectedShip(), getDirection())
+        console.log(row, column, getSelectedShip(), getDirection());
+        alert(legal)
+    }
+
+
 
     //PUBSUBS
+    pubsub.subscribe('cellClicked', handleCell)
     pubsub.subscribe('selectedShip', setShip)
     pubsub.subscribe('changeDirection', setDirection)
     pubsub.subscribe('playerBoardInit', setPlayerboard)
