@@ -14,18 +14,14 @@ body {
 }
 
 .gameboard {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(10, 40px);
+  grid-template-rows: repeat(10, 40px);
   padding: 10px;
   gap: 5px;
   border: 2px solid black;
 }
 
-.row {
-  display: flex;
-  
-  gap: 5px;
-}
 
 .red {
   background-color: rgb(135, 0, 0);}

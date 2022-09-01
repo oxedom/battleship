@@ -10,14 +10,10 @@ export const gameboard = () => {
     let column = 1
     for (let index = 0; index < 10; index++) {
 
-        const row = document.createElement('div')
-        row.setAttribute('id', `row${index + 1}`)
-        row.classList.add('row')
-
         for (let j = 0; j < 10; j++) {
             let cell = document.createElement('div')
             cell.classList.add('cell')
-            row.append(cell)
+
             if (!stateObject.getplayerBoardBuilt()) {
                 cell.addEventListener('click', (e) => { pubsub.publish('cellClicked', e) })
                 cell.setAttribute('id', cellID)
@@ -29,7 +25,7 @@ export const gameboard = () => {
                     column = 1
                 }
             }
-            board.append(row)
+            board.append(cell)
         }
 
 

@@ -22,6 +22,8 @@ const XYtoIndex = function (row, column) {
   return i
 }
 
+
+
 const checkLegalMove = (row, column, shipLength, direction) => {
   let answer = undefined
   if (shipLength == 1) { return true }
@@ -56,7 +58,6 @@ const legalToMove = (row, column, shipLength, direction) => {
   }
   return index
 }
-
 
 
 module.exports = { compare, XYtoIndex, checkLegalMove, legalToMove };
