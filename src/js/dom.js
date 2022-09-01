@@ -7,24 +7,33 @@ export const dom = (function () {
     pubsub.subscribe('paintCells', paintCells)
 
     function paintCells(cellID) {
+
+
+
+
         let cell = document.getElementById(cellID)
-        cell.classList.add('cellected')
-        console.log(stateObject.getDirection());
+
+        let shipLength = stateObject.getSelectedShip()
+
+        if (cell.classList.contains('cellected')) { return }
         if (stateObject.getDirection() === 'row') {
-            let shipLength = stateObject.getSelectedShip()
+            cell.classList.add('cellected')
+            cell.setAttribute('marked', true)
             for (let index = 1; index < shipLength; index++) {
                 cell = cell.nextElementSibling
                 cell.classList.add('cellected')
             }
         }
-        else {
-            console.log(stateObject.getDirection());
-            let shipLength = stateObject.getSelectedShip()
-            let tempCellID = cellID
-            for (let index = 1; index < shipLength; index++) {
-                tempCellID + 10
-                cell = document.getElementById(tempCellID)
-                cell.classList.add('cellected')
+        if (stateObject.getDirection() === 'column') {
+
+            let tempCellID = parseInt(cellID)
+
+            for (let index = 0; index < shipLength; index++) {
+                console.log(tempCellID);
+                let tempCell = document.getElementById(`${tempCellID}`)
+                tempCell.classList.add('cellected')
+                tempCellID = tempCellID + 10
+
             }
 
 
