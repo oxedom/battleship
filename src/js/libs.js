@@ -27,8 +27,7 @@ const XYtoIndex = function (row, column) {
 
 
 const checkLegalMove = (row, column, shipLength, direction) => {
-  console.log('BANANANANAN');
-  console.log(stateObject);
+
   let answer = undefined
 
   shipLength = parseInt(shipLength)
