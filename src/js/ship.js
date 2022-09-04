@@ -1,57 +1,44 @@
+const libs = require("./libs");
+
 const ShipFactory = () => {
-
- 
-   let  x = undefined
-   let  y = undefined
-   let length = undefined
-   let direction = undefined
-  
-
-  const getLength = () => {
-    return length
+  let _shipCords = [];
+  const _hitCords = [];
+  const _setArray = (targetArr, valuesArr) => {
+    valuesArr.forEach((value) => {
+      if (value > 100) {
+        throw new Error("VALUE TOO BIG FOR GAMEBOARD");
+      } else {
+        targetArr.push(value);
+      }
+    });
+  };
+  const length = () => {
+    return _shipCords.length;
+  };
+  const setCords = (cordsArr) => {
+    _setArray(_shipCords, cordsArr);
   };
 
+  const clearCords = () => {
+    _shipCords = [];
+  };
 
-  const setLength = (lengthPara) => {
-    if(0 < lengthPara < 6) 
-    {
-      length = lengthPara
+  const getCords = () => {
+    return _shipCords;
+  };
+  const hitShip = (cord) => {
+    let answer = _shipCords.includes(cord);
+    if (answer) {
+      _hitCords.push(cord);
     }
-  
-  }
+    return answer;
+  };
 
-  const checkValid = (x,y) => 
-  {
-    let answer = undefined
-    //COLUMN = X 
-    //ROW = Y 
-    if(direction === 'row') 
-    {
-      if((length + y) > 11) { answer = false}
-    }
+  const isSunk = () => {
+    return libs.compare(_hitCords.sort(), _shipCords.sort());
+  };
 
-    if(direction === 'column')
-    {
-      if((x + y) > 11)  { answer = false}
-    }
-    return answer
-    }
-   
-
-  
-  const setCords = (xPara,yPara,direction) => {
-
-
-    if(length == 1  ) { x = xPara; y = yPara}
-
-
-
-  }
- 
-
-
-return { checkValid, setLength}
-}
-
+  return { setCords, length, getCords, hitShip, clearCords, isSunk };
+};
 
 module.exports = { ShipFactory };

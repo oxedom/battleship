@@ -44,6 +44,10 @@ const GameboardFactory = () => {
     return answer;
   };
 
+  const placeRandom = (length) => {
+
+  }
+
   return { placeShip, getShips, receiveAttack, getMissed, sunkenShips };
 };
 
