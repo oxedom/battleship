@@ -1,38 +1,35 @@
-const { GameboardFactory } = require("../gameboard");
 
-describe("Check Ship and HitSHip", () => {
-  const testOneGameboard = GameboardFactory();
-  testOneGameboard.placeShip([4, 10, 40, 10]);
+const { GameboardFactory } = require('../gameboard')
 
-  test("Check ship", () => {
-    expect(testOneGameboard.getShips()[0].getCords()).toEqual([4, 10, 40, 10]);
-  });
+test("Ship set cords ", () => {
+  const gameboard = GameboardFactory()
+  gameboard.placeShip([2, 3, 4])
 
-  test("Hit ship", () => {
-    expect(testOneGameboard.receiveAttack(4)).toEqual(true);
-  });
 
-  test("Hit ship", () => {
-    expect(testOneGameboard.receiveAttack(5)).toEqual(false);
-  });
-
-  test("Hit ship", () => {
-    expect(testOneGameboard.receiveAttack(15)).toEqual(false);
-  });
-
-  test("Hit ship", () => {
-    expect(testOneGameboard.receiveAttack(40)).toEqual(true);
-  });
+  expect(gameboard.getShips().length).toEqual(1);
 });
 
-describe("Sink Ship GAMEBOARD TEST", () => {
-  const board = GameboardFactory();
-  board.placeShip([77, 78, 79]);
-  board.receiveAttack(77);
-  board.receiveAttack(78);
-  board.receiveAttack(79);
+test("Ship set cords 2 ", () => {
+  const gameboard = GameboardFactory()
+  gameboard.placeShip([2, 3, 4])
+  gameboard.placeShip([2, 5, 6])
 
-  test("Gamebord Recive Attack Test 1", () => {
-    expect(board.sunkenShips()).toEqual(true);
-  });
+  expect(gameboard.getShips().length).toEqual(1);
+});
+
+test("Ship set cords 3 ", () => {
+  const gameboard = GameboardFactory()
+  gameboard.placeShip([2, 3, 4])
+  gameboard.placeShip([4, 5, 6])
+
+  expect(gameboard.getShips().length).toEqual(1);
+});
+
+
+test("Ship set cords 4 ", () => {
+  const gameboard = GameboardFactory()
+  gameboard.placeShip([7, 8, 9])
+  gameboard.placeShip([4, 5, 6])
+
+  expect(gameboard.getShips().length).toEqual(2);
 });

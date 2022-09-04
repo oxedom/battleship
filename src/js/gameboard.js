@@ -8,10 +8,29 @@ const GameboardFactory = () => {
   };
 
   const placeShip = (cordsArr) => {
+    if (!canPlace(cordsArr)) { return }
     const ship = ShipFactory();
+    ship.setLength(cordsArr.length)
     ship.setCords(cordsArr);
     _ships.push(ship);
   };
+
+  const canPlace = (cordsArr) => {
+
+    let answer = true
+    let allCords = []
+    _ships.forEach(ship => {
+      allCords.push(ship.getCords())
+    })
+    allCords = allCords.flat()
+
+    cordsArr.forEach(cord => {
+      if (allCords.includes(cord)) {
+        answer = false
+      }
+    })
+    return answer
+  }
 
   const receiveAttack = (cord) => {
     let _wasHit = false;

@@ -1,39 +1,35 @@
-const { ShipFactory } = require("../ship");
+const { ShipFactory } = require('../ship')
 
-describe("SET CORDS + HIT SHIP, CLEARCOARDS", () => {
-  const testShip = ShipFactory();
-  testShip.setCords([4, 10, 40, 10]);
-  test("Set Cords", () => {
-    expect(testShip.getCords()).toEqual([4, 10, 40, 10]);
-  });
-  test("hitShip ", () => {
-    expect(testShip.hitShip(4)).toBe(true);
-  });
+test("Ship set cords ", () => {
+    const myShip = ShipFactory()
+    myShip.setLength(3)
+    let cords = [1, 2, 3]
+    myShip.setCords(cords)
 
-  test("Clear Cords", () => {
-    testShip.clearCords();
-    expect(testShip.getCords()).toEqual([]);
-  });
+    expect(myShip.getCords()).toEqual(cords);
 });
-describe("SINK SHIP", () => {
-  test("sinkShip", () => {
-    const sinkShip = ShipFactory();
-    sinkShip.setCords([5, 6, 7, 8]);
-    sinkShip.hitShip(5);
-    sinkShip.hitShip(6);
-    sinkShip.hitShip(7);
-    sinkShip.hitShip(8);
-    expect(sinkShip.getCords()).toEqual([5, 6, 7, 8]);
-    expect(sinkShip.isSunk()).toBe(true);
-  });
 
-  test("sinkShip 2", () => {
-    const sinkShip = ShipFactory();
-    sinkShip.setCords([5, 6, 7, 8]);
-    sinkShip.hitShip(5);
-    sinkShip.hitShip(7);
-    sinkShip.hitShip(8);
 
-    expect(sinkShip.isSunk()).toBe(false);
-  });
+test("Ship set cords ", () => {
+    const myShip = ShipFactory()
+    let cords = [13, 14, 15]
+    myShip.setLength(3)
+    myShip.setCords(cords)
+
+    expect(myShip.getCords()).toEqual(cords);
 });
+
+test("Clear cords ", () => {
+    const myShip = ShipFactory()
+    let cords = [13, 14, 15]
+    myShip.setLength(3)
+    myShip.setCords(cords)
+    myShip.clearCords()
+
+    expect(myShip.getCords()).toEqual([]);
+});
+
+
+
+
+

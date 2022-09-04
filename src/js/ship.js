@@ -1,20 +1,32 @@
 const libs = require("./libs");
 
 const ShipFactory = () => {
+
   let _shipCords = [];
-  const _hitCords = [];
+  let _hitCords = [];
+  let shipLength = 100;
+
   const _setArray = (targetArr, valuesArr) => {
+    if (valuesArr.length != shipLength) { return Error(`${cordsArr.length} is not equal to ${shipLength}}`) }
     valuesArr.forEach((value) => {
       if (value > 100) {
-        throw new Error("VALUE TOO BIG FOR GAMEBOARD");
+        return new Error("VALUE TOO BIG FOR GAMEBOARD");
       } else {
         targetArr.push(value);
       }
     });
   };
-  const length = () => {
-    return _shipCords.length;
+
+
+  const getLength = () => {
+    return shipLength;
   };
+
+  const setLength = (para) => {
+    shipLength = para
+    return shipLength
+  }
+
   const setCords = (cordsArr) => {
     _setArray(_shipCords, cordsArr);
   };
@@ -38,7 +50,7 @@ const ShipFactory = () => {
     return libs.compare(_hitCords.sort(), _shipCords.sort());
   };
 
-  return { setCords, length, getCords, hitShip, clearCords, isSunk };
+  return { setCords, getCords, hitShip, clearCords, isSunk, setLength, getLength };
 };
 
 module.exports = { ShipFactory };

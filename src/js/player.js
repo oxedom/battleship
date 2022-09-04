@@ -3,7 +3,6 @@ const attackEnemy = (enemyGameBoard, cord) => {
 };
 
 const PlayerFactory = () => {
-  let turn = true;
 
   return { attackEnemy };
 };

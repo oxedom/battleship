@@ -6,21 +6,16 @@ import { ComputerPlayerFactory } from "./player"
 import { getShipArray } from "./libs"
 export const stateObject = (function () {
 
-    let ships = [1, 2, 3, 4, 5]
     let direction = 'column'
     let selectedShip = undefined
-    let playerBoardBuilt = false
+    let playerBoardBuilt = true
     let computerBoardBuilt = false
     let gameStart = false
 
+    const p1 = PlayerFactory(g)
     const p1Gameboard = GameboardFactory()
-    const computerGameboard = GameboardFactory()
-    const p1 = PlayerFactory()
+
     const pComputer = ComputerPlayerFactory()
-
-
-
-
 
 
     const getDirection = () => { return direction }
@@ -30,7 +25,6 @@ export const stateObject = (function () {
 
     const setDirection = () => {
         console.log('SET DIRECTION FIRED');
-        console.log(direction);
         if (direction == 'row') {
             return direction = 'column'
         }
@@ -38,6 +32,8 @@ export const stateObject = (function () {
             return direction = 'row'
         }
     }
+
+
     const setComputerBoard = () => computerBoardBuilt = true
     const setPlayerboard = () => playerBoardBuilt = true
     const setShip = (length) => { selectedShip = length }
