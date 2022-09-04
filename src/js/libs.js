@@ -76,4 +76,19 @@ const getShipArray = (cellIndex, length, direction) => {
 }
 
 
-module.exports = { compare, XYtoIndex, checkLegalMove, getShipArray };
+// Here's a function that is also based on cloneNode, but with an option to clone only the parent node and move all the children (to preserve their event listeners):
+
+function recreateNode(el, withChildren) {
+  if (withChildren) {
+    el.parentNode.replaceChild(el.cloneNode(true), el);
+  }
+  else {
+    var newEl = el.cloneNode(false);
+    while (el.hasChildNodes()) newEl.appendChild(el.firstChild);
+    el.parentNode.replaceChild(newEl, el);
+  }
+}
+
+
+
+module.exports = { compare, XYtoIndex, checkLegalMove, getShipArray, recreateNode };

@@ -1,6 +1,6 @@
 import { pubsub } from "./pubsub"
 import { GameboardFactory } from "./factorys/gameboard"
-import { getShipArray, checkLegalMove } from './libs'
+import { getShipArray, checkLegalMove, recreateNode } from './libs'
 import { ComputerPlayerFactory, PlayerFactory } from "./factorys/player"
 
 export const stateObject = (function () {
@@ -26,7 +26,15 @@ export const stateObject = (function () {
     pubsub.subscribe('selectedShip', setShip)
     pubsub.subscribe('built', setFirstBuilt)
     pubsub.subscribe('AttackShip', handleAttackClick)
+    pubsub.subscribe('gameStart', handleStart)
 
+    function handleStart() {
+        gameStart = true
+        pubsub.publish('deleteFlip')
+        alert('game started')
+        //REMOVE ALL EVENT LISTNERS
+        document.querySelectorAll('.gameboard')[0].childNodes.forEach(cell => { recreateNode(cell) })
+    }
 
     computerGameboard.getShips().forEach(ship => {
         setTimeout(() => {
@@ -53,8 +61,7 @@ export const stateObject = (function () {
                 playerGameboard.placeShip(shipArr)
                 pubsub.publish('paintShip', shipArr)
                 if (playerGameboard.getShips().length === 5) {
-                    alert('GAME STARTED')
-                    gameStart = true
+                    pubsub.publish('gameStart')
                 }
             }
         }
@@ -65,7 +72,11 @@ export const stateObject = (function () {
         if (gameStart) {
             attackShip(e)
             computer.computerAttack(playerGameboard)
-            console.log(computer.computerAttack(playerGameboard));
+            let answer = computer.computerAttack(playerGameboard)
+            if (answer) {
+                e.target.classList.add('hit')
+            }
+            else { e.target.classList.add('miss') }
         }
     }
     function attackShip(e) {

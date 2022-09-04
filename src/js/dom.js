@@ -5,7 +5,7 @@ import { stateObject } from './state';
 export const dom = (function () {
 
     pubsub.subscribe('paintShip', paintCells)
-
+    pubsub.subscribe('deleteFlip', deleteFlip)
     pubsub.subscribe('deleteShip', deleteShip)
 
     function paintCells(cellArr) {
@@ -17,6 +17,10 @@ export const dom = (function () {
 
     function deleteShip(selectedShip) {
         document.getElementById(`ship_${selectedShip}`).style = 'display: none'
+    }
+
+    function deleteFlip() {
+        document.querySelector("#arsenal > button").style = 'display: none'
     }
 
     return {};
