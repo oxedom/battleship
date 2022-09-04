@@ -70,9 +70,20 @@ export const stateObject = (function () {
     function handleAttackClick(e) {
         if (gameStart) {
             attackShip(e)
-            computer.computerAttack(playerGameboard)
+            computerAttackShip()
+            console.log('BOARDS OF CANADA');
+            console.log(computerAttack);
         }
     }
+
+    function computerAttackShip() {
+        let computerAttack = computer.computerAttack(playerGameboard)
+
+
+        console.log((playerGameboard.sunkenShips()));
+    }
+
+
     function attackShip(e) {
         player.attackEnemy(computerGameboard, parseInt(e.target.getAttribute('index')))
         let answer = player.attackEnemy(computerGameboard, parseInt(e.target.getAttribute('index')));
