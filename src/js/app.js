@@ -1,5 +1,5 @@
-import { PlayerFactory, ComputerPlayerFactory } from "./player"
-import { GameboardFactory } from "./gameboard"
+import { PlayerFactory, ComputerPlayerFactory } from "./factorys/player"
+import { GameboardFactory } from "./factorys/gameboard"
 import { dom } from './dom'
 import { header } from './comps/header'
 import { footer } from './comps/footer'

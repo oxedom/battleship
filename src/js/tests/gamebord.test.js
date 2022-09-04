@@ -1,5 +1,5 @@
 
-const { GameboardFactory } = require('../gameboard')
+const { GameboardFactory } = require('../factorys/gameboard')
 
 test("Ship set cords ", () => {
   const gameboard = GameboardFactory()

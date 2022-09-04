@@ -1,10 +1,10 @@
-const libs = require("./libs");
+const libs = require("../libs");
 
 const ShipFactory = () => {
 
   let _shipCords = [];
   let _hitCords = [];
-  let shipLength = 100;
+  let shipLength = 0;
 
   const _setArray = (targetArr, valuesArr) => {
     if (valuesArr.length != shipLength) { return Error(`${cordsArr.length} is not equal to ${shipLength}}`) }
