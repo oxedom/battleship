@@ -70,7 +70,7 @@ const getShipArray = (cellIndex, length, direction) => {
     }
   }
 
-  if (arr.includes(100)) { alert('ERORROROROROROROR') }
+  if (arr.includes(101)) { alert('ERORROROROROROROR') }
 
   return arr
 }

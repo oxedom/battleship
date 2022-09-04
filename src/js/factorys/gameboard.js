@@ -3,6 +3,7 @@ const { ShipFactory } = require("./ship");
 const GameboardFactory = () => {
   let _ships = [];
   let _missedHits = [];
+
   const getShips = () => {
     return _ships;
   };
@@ -67,7 +68,7 @@ const GameboardFactory = () => {
 
   }
 
-  return { placeShip, getShips, receiveAttack, getMissed, sunkenShips };
+  return { placeShip, getShips, receiveAttack, getMissed, sunkenShips, canPlace };
 };
 
 module.exports = { GameboardFactory };

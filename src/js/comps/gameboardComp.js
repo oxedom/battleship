@@ -14,6 +14,7 @@ export const gameboard = () => {
             cell.setAttribute('index', index)
             cell.setAttribute('y', i + 1)
             cell.setAttribute('x', j + 1)
+            cell.addEventListener('click', (e) => pubsub.publish('cellClick', e))
             index++
             cell.classList.add('cell')
             board.append(cell)
