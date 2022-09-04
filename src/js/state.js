@@ -17,6 +17,7 @@ export const stateObject = (function () {
     let computerGameboard = GameboardFactory()
 
     computerGameboard.placeRandom()
+
     //PUBSUBS
 
     pubsub.subscribe('placeShipClick', placeShipClick)
@@ -25,6 +26,16 @@ export const stateObject = (function () {
     pubsub.subscribe('selectedShip', setShip)
     pubsub.subscribe('built', setFirstBuilt)
     pubsub.subscribe('AttackShip', handleAttackClick)
+
+
+    computerGameboard.getShips().forEach(ship => {
+        setTimeout(() => {
+            ship.getCords().forEach(cord => {
+                document.querySelector(`#content > main > div.arena > div:nth-child(2) > div:nth-child(${cord})`).classList.add('cellected')
+            })
+
+        }, 0);
+    })
     function deleteShip() {
         pubsub.publish('deleteShip', selectedShip)
         selectedShip = undefined

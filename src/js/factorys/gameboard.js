@@ -76,9 +76,9 @@ const GameboardFactory = () => {
 
   const placeRandom = (length) => {
 
-    arr1 = [1,]
+    arr1 = [99]
     arr2 = [2, 3]
-    arr3 = [5, 10, 20]
+    arr3 = [5, 6, 7]
     arr4 = [30, 40, 50, 60]
     arr5 = [72, 73, 74, 75, 76]
 
