@@ -1,4 +1,4 @@
-const { XYtoIndex, checkLegalMove, getShipArray } = require('../libs')
+const { XYtoIndex, checkLegalMove } = require('../libs')
 
 test("ROW COLUMN 1", () => {
     const row = 5
@@ -113,78 +113,4 @@ test("Check Legal 7 ", () => {
     const answer = true
 
     expect(checkLegalMove(row, column, ship, direction)).toEqual(answer);
-});
-
-
-test("SHIP ARRAY 1", () => {
-    const direction = 'column'
-    const cellID = 14
-    const ship = 4
-    const answer = [14, 24, 34, 44]
-
-    expect(getShipArray(cellID, ship, direction)).toEqual(answer);
-});
-
-test("SHIP ARRAY 2", () => {
-    const direction = 'column'
-    const cellID = 15
-    const ship = 4
-    const answer = [15, 25, 35, 45]
-
-    expect(getShipArray(cellID, ship, direction)).toEqual(answer);
-});
-
-
-test("SHIP ARRAY 3", () => {
-    const direction = 'column'
-    const cellID = 1
-    const ship = 3
-    const answer = [1, 11, 21]
-
-    expect(getShipArray(cellID, ship, direction)).toEqual(answer);
-});
-
-test("SHIP ARRAY 4", () => {
-    const direction = 'row'
-    const cellID = 1
-    const ship = 3
-    const answer = [1, 2, 3]
-
-    expect(getShipArray(cellID, ship, direction)).toEqual(answer);
-});
-
-test("SHIP ARRAY 5", () => {
-    const direction = 'row'
-    const cellID = 74
-    const ship = 2
-    const answer = [74, 75]
-
-    expect(getShipArray(cellID, ship, direction)).toEqual(answer);
-});
-
-test("SHIP ARRAY 6", () => {
-    const direction = 'row'
-    const cellID = 3
-    const ship = 2
-    const answer = [3, 4]
-
-    expect(getShipArray(cellID, ship, direction)).toEqual(answer);
-});
-
-test("SHIP ARRAY 7", () => {
-    const direction = 'row'
-    const cellID = 44
-    const ship = 1
-    const answer = [44]
-
-    expect(getShipArray(cellID, ship, direction)).toEqual(answer);
-});
-
-test("SHIP ARRAY 8", () => {
-    const direction = 'row'
-    const cellID = 3
-    const ship = 7
-    const answer = [3, 4, 5, 6, 7, 8, 9]
-
-    expect(getShipArray(cellID, ship, direction)).toEqual(answer);
 });

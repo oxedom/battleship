@@ -15,7 +15,6 @@ const ComputerPlayerFactory = () => {
     if (enemyGameBoard.getMissed().includes(randomCord)) {
       computerAttack(enemyGameBoard);
     }
-    return randomCord
   };
   return { computerAttack };
 };

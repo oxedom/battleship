@@ -1,5 +1,3 @@
-const stateObject = require('./state');
-
 const compare = function (arr1, arr2) {
   let answer = true;
   // compare lengths - can save a lot of time
@@ -27,7 +25,10 @@ const XYtoIndex = function (row, column) {
 
 
 const checkLegalMove = (row, column, shipLength, direction) => {
+<<<<<<< HEAD
 
+=======
+>>>>>>> aa4b567 (reverted git)
   let answer = undefined
 
   shipLength = parseInt(shipLength)
@@ -50,30 +51,9 @@ const checkLegalMove = (row, column, shipLength, direction) => {
     }
     else { answer = true }
   }
-
-
+  console.log(`INNER LOG ROW: ${row} COLUMN ${column} DIRECTION ${direction}, LENGTH : ${shipLength}`);
   return answer
 }
 
-const getShipArray = (cellIndex, length, direction) => {
-  let arr = []
-  if (direction == 'row') {
-    for (let index = 0; index < length; index++) {
-      arr.push(cellIndex)
-      cellIndex++
-    }
-  }
-  if (direction == 'column') {
-    for (let index = 0; index < length; index++) {
-      arr.push(cellIndex)
-      cellIndex = cellIndex + 10
-    }
-  }
 
-  if (arr.includes(100)) { alert('ERORROROROROROROR') }
-
-  return arr
-}
-
-
-module.exports = { compare, XYtoIndex, checkLegalMove, getShipArray };
+module.exports = { compare, XYtoIndex, checkLegalMove };

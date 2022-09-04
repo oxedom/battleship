@@ -14,9 +14,23 @@ export const dom = (function () {
     }
 
 
+<<<<<<< HEAD
     function paintCell(cellID) {
 
         let cell = document.getElementById(cellID)
+=======
+
+
+
+    function paintCells(cellID) {
+
+        let cell = document.getElementById(cellID)
+
+        let shipLength = stateObject.getSelectedShip()
+
+        if (cell.classList.contains('cellected')) { return }
+        if (stateObject.getDirection() === 'row') {
+>>>>>>> aa4b567 (reverted git)
             cell.classList.add('cellected')
    
         
