@@ -25,10 +25,7 @@ const XYtoIndex = function (row, column) {
 
 
 const checkLegalMove = (row, column, shipLength, direction) => {
-<<<<<<< HEAD
 
-=======
->>>>>>> aa4b567 (reverted git)
   let answer = undefined
 
   shipLength = parseInt(shipLength)

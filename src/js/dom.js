@@ -14,14 +14,6 @@ export const dom = (function () {
     }
 
 
-<<<<<<< HEAD
-    function paintCell(cellID) {
-
-        let cell = document.getElementById(cellID)
-=======
-
-
-
     function paintCells(cellID) {
 
         let cell = document.getElementById(cellID)
@@ -30,11 +22,12 @@ export const dom = (function () {
 
         if (cell.classList.contains('cellected')) { return }
         if (stateObject.getDirection() === 'row') {
->>>>>>> aa4b567 (reverted git)
+
             cell.classList.add('cellected')
-   
-        
-        pubsub.publish('paintingComplete')
+
+
+            pubsub.publish('paintingComplete')
+        }
     }
 
 
