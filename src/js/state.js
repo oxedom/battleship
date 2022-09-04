@@ -30,12 +30,11 @@ export const stateObject = (function () {
 
     function handleStart() {
         gameStart = true
-        pubsub.publish('deleteFlip')
+        pubsub.publish('gameStarted')
         alert('game started')
-        //REMOVE ALL EVENT LISTNERS
-        document.querySelectorAll('.gameboard')[0].childNodes.forEach(cell => { recreateNode(cell) })
     }
 
+    // DEBUGGER FUNCTION
     computerGameboard.getShips().forEach(ship => {
         setTimeout(() => {
             ship.getCords().forEach(cord => {
@@ -72,16 +71,16 @@ export const stateObject = (function () {
         if (gameStart) {
             attackShip(e)
             computer.computerAttack(playerGameboard)
-            let answer = computer.computerAttack(playerGameboard)
-            if (answer) {
-                e.target.classList.add('hit')
-            }
-            else { e.target.classList.add('miss') }
         }
     }
     function attackShip(e) {
         player.attackEnemy(computerGameboard, parseInt(e.target.getAttribute('index')))
-        console.log(player.attackEnemy(computerGameboard, parseInt(e.target.getAttribute('index'))));
+        let answer = player.attackEnemy(computerGameboard, parseInt(e.target.getAttribute('index')));
+        pubsub.publish('handleAttack', { element: e.target, answer: answer })
+        if (answer) {
+            e.target.classList.add('hit')
+        }
+        else { e.target.classList.add('miss') }
     }
 
 

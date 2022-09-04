@@ -38,13 +38,7 @@ body {
 .blue {
   background-color: rgb(22, 22, 67);
 }
-.miss {
-  background-color: darkblue;
-}
 
-.hit {
-  background-color: darkred;
-}
 
 .center {
   display: flex;
@@ -133,4 +127,12 @@ transform: scale(1.1);
 .shipLength{
   font-weight: 400;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.miss {
+  background-color: darkblue;
+}
+
+.hit {
+  background-color: rgb(255, 0, 0);
 }
