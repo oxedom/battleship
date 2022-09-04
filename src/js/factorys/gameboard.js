@@ -64,11 +64,33 @@ const GameboardFactory = () => {
     return answer;
   };
 
+  // const genRandom = (length) => 
+  // {
+  //   let arr = []
+
+  //   let randomCord = Math.floor(Math.random() * 100) + 1;
+  //   for (let index = 0; index <length; index++) {
+  //     arr.push(randomCord)
+
+  //   }}
+
   const placeRandom = (length) => {
+
+    arr1 = [1,]
+    arr2 = [2, 3]
+    arr3 = [5, 10, 20]
+    arr4 = [30, 40, 50, 60]
+    arr5 = [72, 73, 74, 75, 76]
+
+    placeShip(arr1)
+    placeShip(arr2)
+    placeShip(arr3)
+    placeShip(arr4)
+    placeShip(arr5)
 
   }
 
-  return { placeShip, getShips, receiveAttack, getMissed, sunkenShips, canPlace };
+  return { placeShip, getShips, receiveAttack, getMissed, sunkenShips, canPlace, placeRandom };
 };
 
 module.exports = { GameboardFactory };

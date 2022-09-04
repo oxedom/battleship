@@ -18,6 +18,5 @@ export const dom = (function () {
 
 
 
-
     return {};
 })();

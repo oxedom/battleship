@@ -18,6 +18,7 @@ export default (function () {
         let headerElement = header()
         let footerElement = footer()
         let playerGameboard = gameboard()
+
         let enemyGameboard = gameboard()
         let arsenalElement = arsenal()
         let arenaElement = arena()

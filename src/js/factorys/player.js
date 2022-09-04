@@ -1,5 +1,5 @@
 const attackEnemy = (enemyGameBoard, cord) => {
-  enemyGameBoard.receiveAttack(cord);
+  return enemyGameBoard.receiveAttack(cord);
 };
 
 const PlayerFactory = () => {
@@ -8,6 +8,7 @@ const PlayerFactory = () => {
 };
 
 const ComputerPlayerFactory = () => {
+
   const computerAttack = (enemyGameBoard) => {
     let randomCord = Math.floor(Math.random() * 100) + 1;
 

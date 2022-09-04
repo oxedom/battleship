@@ -23,12 +23,7 @@ body {
 }
 
 
-.red {
-  background-color: rgb(135, 0, 0);}
 
-.blue {
-  background-color: rgb(22, 22, 67);
-}
 
 .cell {
   
@@ -37,6 +32,12 @@ body {
   padding: 15px;
 }
 
+.red {
+  background-color: rgb(135, 0, 0);}
+
+.blue {
+  background-color: rgb(22, 22, 67);
+}
 .miss {
   background-color: darkblue;
 }

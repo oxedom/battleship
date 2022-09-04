@@ -1,6 +1,7 @@
 import { pubsub } from "./pubsub"
 import { GameboardFactory } from "./factorys/gameboard"
 import { getShipArray, checkLegalMove } from './libs'
+import { ComputerPlayerFactory, PlayerFactory } from "./factorys/player"
 
 export const stateObject = (function () {
 
@@ -8,21 +9,28 @@ export const stateObject = (function () {
     let selectedShip = undefined
 
     let gameStart = false
+    let firstBuilt = false
+    let player = PlayerFactory()
+    let computer = ComputerPlayerFactory()
 
     let playerGameboard = GameboardFactory()
     let computerGameboard = GameboardFactory()
+
+    computerGameboard.placeRandom()
     //PUBSUBS
 
-    pubsub.subscribe('cellClick', handleClick)
+    pubsub.subscribe('placeShipClick', placeShipClick)
     pubsub.subscribe('paintShip', deleteShip)
     pubsub.subscribe('changeDirection', setDirection)
     pubsub.subscribe('selectedShip', setShip)
-
+    pubsub.subscribe('built', setFirstBuilt)
+    pubsub.subscribe('AttackShip', handleAttackClick)
     function deleteShip() {
         pubsub.publish('deleteShip', selectedShip)
         selectedShip = undefined
     }
-    function handleClick(e) {
+
+    function placeShipClick(e) {
 
         if (!gameStart && selectedShip > 0 && playerGameboard.getShips().length < 5) {
             let x = parseInt(e.target.getAttribute('x'))
@@ -39,13 +47,20 @@ export const stateObject = (function () {
                 }
             }
         }
-
-        if (gameStart) {
-
-        }
-
     }
 
+
+    function handleAttackClick(e) {
+        if (gameStart) {
+            attackShip(e)
+            computer.computerAttack(playerGameboard)
+            console.log(computer.computerAttack(playerGameboard));
+        }
+    }
+    function attackShip(e) {
+        player.attackEnemy(computerGameboard, parseInt(e.target.getAttribute('index')))
+        console.log(player.attackEnemy(computerGameboard, parseInt(e.target.getAttribute('index'))));
+    }
 
 
     function setShip(value) {
@@ -61,6 +76,14 @@ export const stateObject = (function () {
         }
     }
 
-    return {}
+    function setFirstBuilt() {
+        firstBuilt = true
+    }
+
+    function getBuilt() {
+        return firstBuilt
+    }
+
+    return { getBuilt }
 
 })()
