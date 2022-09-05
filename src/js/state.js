@@ -18,6 +18,12 @@ export const stateObject = (function () {
 
     computerGameboard.placeRandom()
 
+
+
+
+
+
+
     //PUBSUBS
 
     pubsub.subscribe('placeShipClick', placeShipClick)
@@ -25,12 +31,10 @@ export const stateObject = (function () {
     pubsub.subscribe('changeDirection', setDirection)
     pubsub.subscribe('selectedShip', setShip)
     pubsub.subscribe('built', setFirstBuilt)
-    pubsub.subscribe('AttackShip', handleAttackClick)
     pubsub.subscribe('gameStart', handleStart)
-
+    pubsub.subscribe('attackShip', handleAttackShip)
     function handleStart() {
         gameStart = true
-        pubsub.publish('gameStarted')
         alert('game started')
     }
 
@@ -67,31 +71,25 @@ export const stateObject = (function () {
     }
 
 
-    function handleAttackClick(e) {
-        if (gameStart) {
-            attackShip(e)
-            computerAttackShip()
-            console.log('BOARDS OF CANADA');
-            console.log(computerAttack);
-        }
+    function handleAttackShip(e) {
+        if (gameStart) { attackShip(e) }
+
     }
-
-    function computerAttackShip() {
-        let computerAttack = computer.computerAttack(playerGameboard)
-
-
-        console.log((playerGameboard.sunkenShips()));
-    }
-
-
     function attackShip(e) {
-        player.attackEnemy(computerGameboard, parseInt(e.target.getAttribute('index')))
         let answer = player.attackEnemy(computerGameboard, parseInt(e.target.getAttribute('index')));
-        pubsub.publish('handleAttack', { element: e.target, answer: answer })
+
         if (answer) {
             e.target.classList.add('hit')
+            // console.log(computerGameboard.sunkenShips())
         }
         else { e.target.classList.add('miss') }
+
+        if (computerGameboard.sunkenShips()) {
+            alert('Yes')
+            pubsub.publish('handleWin', 'player')
+        }
+
+        pubsub.publish('handleComputerAttack', computer.computerAttack(playerGameboard))
     }
 
 

@@ -39,6 +39,8 @@ const ShipFactory = () => {
     return _shipCords;
   };
   const hitShip = (cord) => {
+    if (_hitCords.includes(cord)) { return }
+    cord = parseInt(cord)
     let answer = _shipCords.includes(cord);
     if (answer) {
       _hitCords.push(cord);

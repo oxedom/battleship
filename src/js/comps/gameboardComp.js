@@ -23,7 +23,7 @@ export const gameboard = () => {
             }
 
             else {
-                cell.addEventListener('click', (e) => pubsub.publish('AttackShip', e))
+                cell.addEventListener('click', (e) => pubsub.publish('attackShip', e))
                 cell.classList.add('red')
             }
             index++

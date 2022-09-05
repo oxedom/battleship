@@ -5,10 +5,23 @@ import { recreateNode } from './libs';
 
 export const dom = (function () {
 
+    pubsub.subscribe('handleComputerAttack', handlePC)
     pubsub.subscribe('paintShip', paintCells)
-    pubsub.subscribe('gameStarted', gameStarted)
+    pubsub.subscribe('gameStart', gameStarted)
     pubsub.subscribe('deleteShip', deleteShip)
     pubsub.subscribe('handleAttack', handleAttack)
+
+
+    function handlePC(objPara) {
+        console.log('handlePC');
+        if (objPara.answer) {
+            document.querySelector(`#content > main > div.arena > div:nth-child(1) > div:nth-child(${objPara.index})`).classList.add('hit')
+        }
+        else {
+            document.querySelector(`#content > main > div.arena > div:nth-child(1) > div:nth-child(${objPara.index})`).classList.add('miss')
+        }
+    }
+
 
     function handleAttack(objPara) {
         if (objPara.answer) {
@@ -30,6 +43,7 @@ export const dom = (function () {
 
     function gameStarted() {
         deleteFlip()
+        //REMOVE ALL EVENT LISTENRS FROM PLAYERBOARD
         document.querySelectorAll('.gameboard')[0].childNodes.forEach(cell => { recreateNode(cell) })
     }
 
