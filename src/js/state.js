@@ -38,7 +38,7 @@ export const stateObject = (function () {
     function handleComputerAttack(obj) {
 
         if (playerGameboard.sunkenShips()) {
-            alert('GAME OVER')
+            alert('PlayerLost')
         }
 
     }
@@ -86,16 +86,14 @@ export const stateObject = (function () {
 
     }
     function attackShip(e) {
-        let answer = player.attackEnemy(computerGameboard, parseInt(e.target.getAttribute('index')));
 
-        if (answer) {
-            e.target.classList.add('hit')
-            // console.log(computerGameboard.sunkenShips())
-        }
-        else { e.target.classList.add('miss') }
+        player.attackEnemy(computerGameboard, parseInt(e.target.getAttribute('index'))) ?
+            e.target.classList.add('hit') : e.target.classList.add('miss')
+        recreateNode(e.target)
+
 
         if (computerGameboard.sunkenShips()) {
-            alert('Yes')
+            alert('Computer Lost')
             pubsub.publish('handleWin', 'player')
         }
 

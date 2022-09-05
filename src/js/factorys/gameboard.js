@@ -34,6 +34,7 @@ const GameboardFactory = () => {
   }
 
   const receiveAttack = (cord) => {
+    if (_missedHits.includes(cord)) { return }
     let _wasHit = false;
     //Cycles through all ships on a Players Gameboard
     _ships.forEach((ship) => {
@@ -64,13 +65,20 @@ const GameboardFactory = () => {
     return answer;
   };
 
-  const randomAttack = () => {
+  const getRandom = () => {
     let gotRandom = false
+
     let cord = undefined
     while (!gotRandom) {
       cord = Math.floor(Math.random() * 100) + 1;
       if (!_missedHits.includes(cord)) { gotRandom = true }
     }
+    return cord
+  }
+
+  const randomAttack = () => {
+
+    let cord = getRandom()
     let answer = receiveAttack(cord)
 
     return { answer: answer, index: cord }

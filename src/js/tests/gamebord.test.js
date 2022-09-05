@@ -33,3 +33,35 @@ test("Ship set cords 4 ", () => {
 
   expect(gameboard.getShips().length).toEqual(2);
 });
+
+test("Random Attack ", () => {
+  const gameboard = GameboardFactory()
+  gameboard.placeShip([100])
+
+  for (let index = 0; index < 99; index++) {
+    console.log(index + 1);
+    gameboard.receiveAttack(index + 1)
+
+  }
+
+  let answer = gameboard.randomAttack()
+
+
+  expect(answer).toEqual({ answer: true, index: 100 });
+});
+
+// test("Random Attack ", () => {
+//   const gameboard = GameboardFactory()
+//   gameboard.placeShip([100])
+
+//   for (let index = 0; index < 50; index++) {
+//     console.log(index + 1);
+//     gameboard.receiveAttack(index + 1)
+
+//   }
+
+//   let answer = gameboard.randomAttack()
+
+
+//   expect(answer).toEqual({ answer: true, index: 50 });
+// });
