@@ -10,16 +10,13 @@ const PlayerFactory = () => {
 const ComputerPlayerFactory = () => {
 
   const computerAttack = (enemyGameBoard) => {
-    let randomCord = Math.floor(Math.random() * 100) + 1;
+    let answer = enemyGameBoard.randomAttack()
+    console.log(answer);
+    console.log('pepe');
+    //Returns Boolean
+    return answer
 
-    if (enemyGameBoard.getMissed().includes(randomCord)) {
-      computerAttack(enemyGameBoard);
-    }
-    else {
-      //Returns Boolean
-      return { answer: attackEnemy(enemyGameBoard, randomCord), index: randomCord }
 
-    }
 
   };
   return { computerAttack };

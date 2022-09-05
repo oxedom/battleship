@@ -64,15 +64,18 @@ const GameboardFactory = () => {
     return answer;
   };
 
-  // const genRandom = (length) => 
-  // {
-  //   let arr = []
+  const randomAttack = () => {
+    let gotRandom = false
+    let cord = undefined
+    while (!gotRandom) {
+      cord = Math.floor(Math.random() * 100) + 1;
+      if (!_missedHits.includes(cord)) { gotRandom = true }
+    }
+    let answer = receiveAttack(cord)
 
-  //   let randomCord = Math.floor(Math.random() * 100) + 1;
-  //   for (let index = 0; index <length; index++) {
-  //     arr.push(randomCord)
+    return { answer: answer, index: cord }
+  }
 
-  //   }}
 
   const placeRandom = (length) => {
 
@@ -90,7 +93,7 @@ const GameboardFactory = () => {
 
   }
 
-  return { placeShip, getShips, receiveAttack, getMissed, sunkenShips, canPlace, placeRandom };
-};
+  return { placeShip, getShips, receiveAttack, getMissed, sunkenShips, canPlace, placeRandom, randomAttack };
+}
 
 module.exports = { GameboardFactory };

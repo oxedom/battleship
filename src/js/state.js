@@ -33,6 +33,16 @@ export const stateObject = (function () {
     pubsub.subscribe('built', setFirstBuilt)
     pubsub.subscribe('gameStart', handleStart)
     pubsub.subscribe('attackShip', handleAttackShip)
+    pubsub.subscribe('handleComputerAttack', handleComputerAttack)
+
+    function handleComputerAttack(obj) {
+
+        if (playerGameboard.sunkenShips()) {
+            alert('GAME OVER')
+        }
+
+    }
+
     function handleStart() {
         gameStart = true
         alert('game started')
