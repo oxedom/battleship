@@ -136,3 +136,36 @@ transform: scale(1.1);
 .hit {
   background-color: rgb(255, 0, 0);
 }
+
+.overlay 
+{
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+  right: 0px;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.6;
+}
+
+.card {
+  text-align: center;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  margin: 15rem;
+  font-size: 50px;
+
+}
+
+.rematchBtn{
+  justify-self: center;
+  align-self: center;
+  transform: scale(4);
+  border: 1px black solid;
+ }
+
+ .rematchBtn:hover {
+  background-color: red;
+ }

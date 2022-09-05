@@ -34,14 +34,21 @@ export const stateObject = (function () {
     pubsub.subscribe('gameStart', handleStart)
     pubsub.subscribe('attackShip', handleAttackShip)
     pubsub.subscribe('handleComputerAttack', handleComputerAttack)
+    pubsub.subscribe('handleWin', handleWin)
 
     function handleComputerAttack(obj) {
 
         if (playerGameboard.sunkenShips()) {
-            alert('PlayerLost')
+            pubsub.publish('handleWin', 'computer')
         }
 
     }
+
+    function handleWin(winner) {
+
+    }
+
+
 
     function handleStart() {
         gameStart = true
@@ -93,7 +100,7 @@ export const stateObject = (function () {
 
 
         if (computerGameboard.sunkenShips()) {
-            alert('Computer Lost')
+
             pubsub.publish('handleWin', 'player')
         }
 
