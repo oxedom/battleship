@@ -7,6 +7,7 @@ import { container } from './comps/container'
 import { gameboard } from "./comps/gameboardComp"
 import { arsenal } from "./comps/arsenalComp"
 import { arena } from "./comps/arenaContainer"
+import { winCard } from "./comps/winCard"
 import { getShipArray } from "./libs"
 
 export default (function () {
@@ -17,14 +18,14 @@ export default (function () {
         let mainElement = container()
         let headerElement = header()
         let footerElement = footer()
-        let playerGameboard = gameboard()
-
-        let enemyGameboard = gameboard()
+        let playerGameboardElement = gameboard()
+        let winCardElement = winCard()
+        let enemyGameboardElement = gameboard()
         let arsenalElement = arsenal()
         let arenaElement = arena()
 
 
-        arenaElement.append(playerGameboard, enemyGameboard)
+        arenaElement.append(playerGameboardElement, enemyGameboardElement)
         mainElement.append(headerElement, arsenalElement, arenaElement, footerElement)
         document.getElementById('content').append(mainElement)
         //ADD MOVES TO ARENA ELEMENT

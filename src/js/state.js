@@ -34,7 +34,7 @@ export const stateObject = (function () {
     pubsub.subscribe('gameStart', handleStart)
     pubsub.subscribe('attackShip', handleAttackShip)
     pubsub.subscribe('handleComputerAttack', handleComputerAttack)
-    pubsub.subscribe('handleWin', handleWin)
+    // pubsub.subscribe('handleWin', handleWin)
 
     function handleComputerAttack(obj) {
 
@@ -44,15 +44,8 @@ export const stateObject = (function () {
 
     }
 
-    function handleWin(winner) {
-
-    }
-
-
-
     function handleStart() {
         gameStart = true
-        alert('game started')
     }
 
     // DEBUGGER FUNCTION
@@ -64,6 +57,9 @@ export const stateObject = (function () {
 
         }, 0);
     })
+
+
+
     function deleteShip() {
         pubsub.publish('deleteShip', selectedShip)
         selectedShip = undefined

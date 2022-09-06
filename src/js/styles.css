@@ -13,6 +13,12 @@ body {
   padding: 0;
 }
 
+.dragging {
+cursor: pointer;
+background-color: brown;
+opacity: 0;
+color: black;
+}
 .gameboard {
   display: grid;
   grid-template-columns: repeat(10, 40px);
@@ -21,8 +27,6 @@ body {
   gap: 5px;
   border: 2px solid black;
 }
-
-
 
 
 .cell {
@@ -53,15 +57,25 @@ body {
 }
 
 .header {
+  /* position: absolute; */
+  justify-self: center;
+  /* align-self: stretch; */
   font-family: battleFont;
-  font-size: 62px;
+  font-size: 42px;
   text-align: center;
   background-color: rgb(176, 22, 22);
   border: 2px solid black;
 }
 
+.flip {
+  transform: rotate(-90deg);
+}
+
+.shipText{
+  transform: rotate(180); 
+}
+
 .ship {
-  /* transform: rotate(-90deg); */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -81,7 +95,7 @@ body {
   min-height: 100vh;
   background-color: rgb(128, 62, 62);
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .footer {
@@ -89,15 +103,13 @@ body {
   justify-items: center;
   justify-content: center;
   padding: 10px;
-  margin-top: 100px;
+  margin-top: 20px;
   border: 2px solid black;
   background-color: rgb(126, 10, 10);
 }
 
 .arsenal {
-  position: absolute;
   margin-left: 30px;
-  top: 40px;
   display: flex;
   justify-content: center;
   gap: 50px;
@@ -107,10 +119,9 @@ body {
   background-color: rgba(255, 255, 255, 0.995);
   border: 1px black solid;
   font-size: 20px;
-  position: absolute;
+  justify-self: center;
+  align-self: center;
   padding: 5px;
-  top: 25px;
-  left: 530px;
 }
 
 .flip-btn:hover {
@@ -125,6 +136,7 @@ transform: scale(1.1);
 }
 
 .shipLength{
+  
   font-weight: 400;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

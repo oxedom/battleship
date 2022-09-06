@@ -39,7 +39,6 @@ test("Random Attack ", () => {
   gameboard.placeShip([100])
 
   for (let index = 0; index < 99; index++) {
-    console.log(index + 1);
     gameboard.receiveAttack(index + 1)
 
   }
@@ -50,18 +49,17 @@ test("Random Attack ", () => {
   expect(answer).toEqual({ answer: true, index: 100 });
 });
 
-// test("Random Attack ", () => {
-//   const gameboard = GameboardFactory()
-//   gameboard.placeShip([100])
+test("Random Attack 2 ", () => {
+  const gameboard = GameboardFactory()
+  // gameboard.placeShip([1, 2, 3, 4, 5])
+  // gameboard.placeShip([5, 6, 7, 8, 9])
 
-//   for (let index = 0; index < 50; index++) {
-//     console.log(index + 1);
-//     gameboard.receiveAttack(index + 1)
+  for (let index = 0; index < 88; index++) {
+    gameboard.receiveAttack(index + 1)
+  }
 
-//   }
+  let answer = gameboard.randomAttack()
+  if (answer.index > 88) { answer = true }
 
-//   let answer = gameboard.randomAttack()
-
-
-//   expect(answer).toEqual({ answer: true, index: 50 });
-// });
+  expect(answer).toEqual(true);
+})

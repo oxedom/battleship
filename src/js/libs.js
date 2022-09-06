@@ -24,6 +24,14 @@ const XYtoIndex = function (row, column) {
   return i
 }
 
+const indexToXY = function (index) {
+  index = index - 1
+  let x = (index % 10) + 1
+  let y = Math.floor(index / 10) + 1
+
+  return { x, y }
+}
+
 
 
 const checkLegalMove = (row, column, shipLength, direction) => {
@@ -91,4 +99,4 @@ function recreateNode(el, withChildren) {
 
 
 
-module.exports = { compare, XYtoIndex, checkLegalMove, getShipArray, recreateNode };
+module.exports = { compare, XYtoIndex, getShipArray, recreateNode, indexToXY, checkLegalMove };

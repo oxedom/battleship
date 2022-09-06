@@ -1,8 +1,17 @@
 const { ShipFactory } = require("./ship");
+const { indexToXY, checkLegalMove } = require('../libs'
+)
 
 const GameboardFactory = () => {
   let _ships = [];
   let _missedHits = [];
+  let _hits = []
+
+  const getAllhits = () => {
+    let allHits = [..._missedHits, ..._hits].sort()
+
+    return allHits
+  }
 
   const getShips = () => {
     return _ships;
@@ -41,6 +50,7 @@ const GameboardFactory = () => {
       //Get Coards returns an array of it's cords
       if (ship.hitShip(cord)) {
         _wasHit = true;
+        _hits.push(cord)
       }
     });
     if (!_wasHit) {
@@ -67,21 +77,52 @@ const GameboardFactory = () => {
 
   const getRandom = () => {
     let gotRandom = false
-
     let cord = undefined
     while (!gotRandom) {
       cord = Math.floor(Math.random() * 100) + 1;
-      if (!_missedHits.includes(cord)) { gotRandom = true }
+      if (!getAllhits().includes(cord)) { gotRandom = true }
     }
     return cord
   }
 
-  const randomAttack = () => {
+  const getRandomPlacement = () => {
+    let gotRandom = false
+    let cord = undefined
+    while (!gotRandom) {
+      cord = Math.floor(Math.random() * 100) + 1;
+      if (!_ships.includes(cord)) { gotRandom = true }
+    }
+    return cord
+  }
 
+
+
+
+  const randomAttack = () => {
     let cord = getRandom()
     let answer = receiveAttack(cord)
-
     return { answer: answer, index: cord }
+  }
+
+
+  const createRandom = (times) => {
+    let cord = undefined
+    let arr = []
+    let sit = undefined
+    cord = getRandomPlacement()
+    let parsedCord = indexToXY(cord)
+    if (parsedCord.x > 10) { sit = true }
+
+    for (let index = 0; index < times; index++) {
+
+      arr.push(cord)
+      sit ? cord-- : cord++
+
+    }
+    let parsedIndex = indexToXY(arr[0])
+
+    if (!checkLegalMove(parsedIndex.y, parsedIndex.x, times, 'row')) { return createRandom(times) }
+    return arr
   }
 
 
@@ -93,11 +134,18 @@ const GameboardFactory = () => {
     arr4 = [30, 40, 50, 60]
     arr5 = [72, 73, 74, 75, 76]
 
-    placeShip(arr1)
-    placeShip(arr2)
-    placeShip(arr3)
-    placeShip(arr4)
-    placeShip(arr5)
+    let arr6 = createRandom(1)
+    let arr7 = createRandom(2)
+    let arr8 = createRandom(3)
+    let arr9 = createRandom(4)
+    let arr10 = createRandom(5)
+    console.log(arr6, arr7, arr8, arr9, arr10);
+
+    placeShip(arr6)
+    placeShip(arr7)
+    placeShip(arr8)
+    placeShip(arr9)
+    placeShip(arr10)
 
   }
 
