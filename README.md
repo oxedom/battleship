@@ -14,4 +14,4 @@ Can't get stuck on this thing forever!
 Your welcome to go through the git history to see how the project took it's shape (TEST's first!) 
 Some tests were deleted after refactoring but they exist in the git history :)
 
-![alt text](https://imgur.com/3nQWD1G)
+![preview](https://imgur.com/3nQWD1G)
