@@ -119,6 +119,7 @@ const GameboardFactory = () => {
       sit ? cord-- : cord++
 
     }
+
     let parsedIndex = indexToXY(arr[0])
 
     if (!checkLegalMove(parsedIndex.y, parsedIndex.x, times, 'row')) { return createRandom(times) }

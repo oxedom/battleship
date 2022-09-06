@@ -48,15 +48,15 @@ export const stateObject = (function () {
         gameStart = true
     }
 
-    // DEBUGGER FUNCTION
-    computerGameboard.getShips().forEach(ship => {
-        setTimeout(() => {
-            ship.getCords().forEach(cord => {
-                document.querySelector(`#content > main > div.arena > div:nth-child(2) > div:nth-child(${cord})`).classList.add('cellected')
-            })
+    // DEBUGGER FUNCTION TO VISUALIZE COMPUTER SHIPS
+    // computerGameboard.getShips().forEach(ship => {
+    //     setTimeout(() => {
+    //         ship.getCords().forEach(cord => {
+    //             document.querySelector(`#content > main > div.arena > div:nth-child(2) > div:nth-child(${cord})`).classList.add('cellected')
+    //         })
 
-        }, 0);
-    })
+    //     }, 0);
+    // })
 
 
 
