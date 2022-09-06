@@ -1,4 +1,4 @@
-const stateObject = require('./state');
+const stateObject = require("./state");
 
 const compare = function (arr1, arr2) {
   let answer = true;
@@ -18,85 +18,89 @@ const compare = function (arr1, arr2) {
 };
 
 const XYtoIndex = function (row, column) {
-  let i = undefined
-  i = column + 10 * (row - 1)
+  let i = undefined;
+  i = column + 10 * (row - 1);
 
-  return i
-}
+  return i;
+};
 
 const indexToXY = function (index) {
-  index = index - 1
-  let x = (index % 10) + 1
-  let y = Math.floor(index / 10) + 1
+  index = index - 1;
+  let x = (index % 10) + 1;
+  let y = Math.floor(index / 10) + 1;
 
-  return { x, y }
-}
-
-
+  return { x, y };
+};
 
 const checkLegalMove = (row, column, shipLength, direction) => {
+  let answer = undefined;
 
-  let answer = undefined
+  shipLength = parseInt(shipLength);
+  row = parseInt(row);
+  column = parseInt(column);
 
-  shipLength = parseInt(shipLength)
-  row = parseInt(row)
-  column = parseInt(column)
-
-  if (shipLength === 1) { return true }
+  if (shipLength === 1) {
+    return true;
+  }
   //ROW CASE
-  if (direction === 'row') {
-    if ((shipLength + column) > 11) {
-      answer = false
+  if (direction === "row") {
+    if (shipLength + column > 11) {
+      answer = false;
+    } else {
+      answer = true;
     }
-    else { answer = true }
-
   }
   //COLUMN CASE
-  if (direction === 'column') {
-    if ((shipLength + row) > 11) {
-      answer = false
+  if (direction === "column") {
+    if (shipLength + row > 11) {
+      answer = false;
+    } else {
+      answer = true;
     }
-    else { answer = true }
   }
 
-
-  return answer
-}
+  return answer;
+};
 
 const getShipArray = (cellIndex, length, direction) => {
-  let arr = []
-  if (direction == 'row') {
+  let arr = [];
+  if (direction == "row") {
     for (let index = 0; index < length; index++) {
-      arr.push(cellIndex)
-      cellIndex++
+      arr.push(cellIndex);
+      cellIndex++;
     }
   }
-  if (direction == 'column') {
+  if (direction == "column") {
     for (let index = 0; index < length; index++) {
-      arr.push(cellIndex)
-      cellIndex = cellIndex + 10
+      arr.push(cellIndex);
+      cellIndex = cellIndex + 10;
     }
   }
 
-  if (arr.includes(101)) { alert('ERORROROROROROROR') }
+  if (arr.includes(101)) {
+    alert("ERORROROROROROROR");
+  }
 
-  return arr
-}
-
+  return arr;
+};
 
 // Here's a function that is also based on cloneNode, but with an option to clone only the parent node and move all the children (to preserve their event listeners):
 
 function recreateNode(el, withChildren) {
   if (withChildren) {
     el.parentNode.replaceChild(el.cloneNode(true), el);
-  }
-  else {
+  } else {
     var newEl = el.cloneNode(false);
     while (el.hasChildNodes()) newEl.appendChild(el.firstChild);
     el.parentNode.replaceChild(newEl, el);
   }
 }
 
-
-
-module.exports = { compare, XYtoIndex, getShipArray, recreateNode, indexToXY, checkLegalMove };
+module.exports = {
+  compare,
+  XYtoIndex,
+  getShipArray,
+  recreateNode,
+  indexToXY,
+  checkLegalMove,
+};

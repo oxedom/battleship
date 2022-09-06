@@ -14,10 +14,10 @@ body {
 }
 
 .dragging {
-cursor: pointer;
-background-color: brown;
-opacity: 0;
-color: black;
+  cursor: pointer;
+  background-color: brown;
+  opacity: 0;
+  color: black;
 }
 .gameboard {
   display: grid;
@@ -28,21 +28,19 @@ color: black;
   border: 2px solid black;
 }
 
-
 .cell {
-  
   background-color: rgb(197, 180, 180);
   border: 2px solid black;
   padding: 15px;
 }
 
 .red {
-  background-color: rgb(135, 0, 0);}
+  background-color: rgb(135, 0, 0);
+}
 
 .blue {
   background-color: rgb(22, 22, 67);
 }
-
 
 .center {
   display: flex;
@@ -71,8 +69,8 @@ color: black;
   transform: rotate(-90deg);
 }
 
-.shipText{
-  transform: rotate(180); 
+.shipText {
+  transform: rotate(180);
 }
 
 .ship {
@@ -82,13 +80,11 @@ color: black;
   align-items: center;
   font-size: 20px;
   font-family: ships;
-  
 }
 
 .ship:hover {
   transform: scale(1.2);
- }
-
+}
 
 .main {
   display: flex;
@@ -115,7 +111,7 @@ color: black;
   gap: 50px;
 }
 .flip-btn {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   background-color: rgba(255, 255, 255, 0.995);
   border: 1px black solid;
   font-size: 20px;
@@ -125,20 +121,20 @@ color: black;
 }
 
 .flip-btn:hover {
-transform: scale(1.1);
+  transform: scale(1.1);
 }
 .selected {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .cellected {
   background-color: goldenrod;
 }
 
-.shipLength{
-  
+.shipLength {
   font-weight: 400;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .miss {
@@ -149,8 +145,7 @@ transform: scale(1.1);
   background-color: rgb(255, 0, 0);
 }
 
-.overlay 
-{
+.overlay {
   position: absolute;
   z-index: 1;
   top: 0px;
@@ -168,16 +163,15 @@ transform: scale(1.1);
   justify-content: center;
   margin: 15rem;
   font-size: 50px;
-
 }
 
-.rematchBtn{
+.rematchBtn {
   justify-self: center;
   align-self: center;
   transform: scale(4);
   border: 1px black solid;
- }
+}
 
- .rematchBtn:hover {
+.rematchBtn:hover {
   background-color: red;
- }
+}

@@ -3,19 +3,13 @@ const attackEnemy = (enemyGameBoard, cord) => {
 };
 
 const PlayerFactory = () => {
-
   return { attackEnemy };
 };
 
 const ComputerPlayerFactory = () => {
-
   const computerAttack = (enemyGameBoard) => {
-
     //Returns Boolean
-    return enemyGameBoard.randomAttack()
-
-
-
+    return enemyGameBoard.randomAttack();
   };
   return { computerAttack };
 };
